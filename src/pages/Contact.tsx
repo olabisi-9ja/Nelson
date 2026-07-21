@@ -41,14 +41,14 @@ export function Contact() {
               <Phone className="h-6 w-6 text-gold" />
               <div>
                 <h3 className="font-display text-lg text-warm-white">Phone</h3>
-                <p className="mt-1 text-chrome">+234 901 234 5678</p>
+                <p className="mt-1 text-chrome">+234 904 955 3906</p>
               </div>
             </div>
             <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-charcoal/40 p-6">
               <MessageCircle className="h-6 w-6 text-gold" />
               <div>
                 <h3 className="font-display text-lg text-warm-white">WhatsApp</h3>
-                <p className="mt-1 text-chrome">+234 901 234 5678</p>
+                <p className="mt-1 text-chrome">+234 904 955 3906</p>
               </div>
             </div>
             <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-charcoal/40 p-6">

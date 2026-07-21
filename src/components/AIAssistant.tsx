@@ -129,7 +129,7 @@ export function AIAssistant() {
               </div>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://wa.me/2349012345678"
+                  href="https://wa.me/2349049553906"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full hover:bg-emerald-500/20 transition font-bold"

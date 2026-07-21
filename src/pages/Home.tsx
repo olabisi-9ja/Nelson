@@ -340,6 +340,78 @@ export function Home() {
         </div>
       </section>
 
+      {/* SECTION 3.5: THE DEMAND CODE BOOK */}
+      <section className="bg-charcoal/20 text-obsidian py-24 md:py-32 px-6 border-b border-obsidian/10">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            
+            {/* Left Column: Book Cover Showcase */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative w-full max-w-[340px] aspect-[2/3] rounded-lg bg-obsidian text-warm-white p-8 shadow-2xl flex flex-col justify-between border border-gold/30 transform transition duration-500 hover:scale-[1.03] select-none">
+                {/* Book design elements */}
+                <div className="absolute inset-0 bg-gradient-to-br from-charcoal/10 via-transparent to-black/40 rounded-lg pointer-events-none" />
+                <div className="absolute left-0 top-0 bottom-0 w-2.5 bg-black/35 rounded-l-lg pointer-events-none shadow-[inset_-2px_0_4px_rgba(255,255,255,0.05)]" />
+                
+                <div className="flex flex-col gap-2">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gold/80">Business & Positioning</span>
+                  <h3 className="font-display font-black text-3xl md:text-4xl tracking-tight leading-none text-balance mt-4 text-warm-white">
+                    THE <br /> DEMAND <br /> CODE
+                  </h3>
+                  <div className="h-0.5 w-12 bg-gold/60 mt-3" />
+                </div>
+                
+                <div className="flex flex-col gap-2 mt-8">
+                  <p className="text-xs italic text-cream/70 leading-relaxed font-medium">
+                    "Stop chasing customers. Make them chase you."
+                  </p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-gold mt-6 border-t border-white/10 pt-3">
+                    Nelson Faseyiku
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Book Details */}
+            <div className="flex flex-col justify-center">
+              <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3">Digital Product</span>
+              <h2 className="text-4xl font-black md:text-5xl tracking-tight leading-none text-obsidian text-balance">
+                The Demand Code
+              </h2>
+              <p className="mt-6 text-base md:text-lg text-obsidian/75 leading-relaxed text-balance">
+                The definitive blueprint on market positioning and client attraction. In this book, Nelson Faseyiku breaks down the principles that transform independent creators and businesses from invisible commodities to premium, highly in-demand brands.
+              </p>
+              
+              <div className="mt-8 space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                  <p className="text-sm text-obsidian/80"><strong>Positioning over Promotion:</strong> Engineer how the high-end market perceives you.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                  <p className="text-sm text-obsidian/80"><strong>Attract, Don't Chase:</strong> Build specialized authority so clients seek your craft.</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                  <p className="text-sm text-obsidian/80"><strong>Premium Margins:</strong> Command pricing that reflects true competence and status.</p>
+                </div>
+              </div>
+              
+              <div className="mt-10">
+                <a
+                  href="https://selar.com/demandcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-obsidian text-warm-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs transition duration-300 hover:bg-gold hover:text-obsidian hover:shadow-lg"
+                >
+                  Buy on Selar
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* SECTION 4: JOURNAL & STORIES */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
         <div className="mb-12 flex items-end justify-between">
