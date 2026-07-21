@@ -6,8 +6,8 @@ export function Home() {
   return (
     <div className="bg-warm-white text-obsidian font-sans">
       {/* HERO SECTION - Video starts below Nav */}
-      <section className="px-4 pb-4 md:px-8 md:pb-8">
-        <div className="relative flex min-h-[75vh] w-full items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-obsidian">
+      <section className="w-full">
+        <div className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden bg-obsidian">
           <video
             autoPlay
             loop
