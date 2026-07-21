@@ -102,7 +102,7 @@ export function Home() {
           <div className="flex w-full items-center justify-start gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden py-4 md:grid md:grid-cols-[28%_1fr_28%] md:overflow-hidden md:gap-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             
             {/* 1. Left Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="order-2 md:order-1 snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {leftImages.map((img, idx) => (
                 <img
                   key={img}
@@ -122,7 +122,7 @@ export function Home() {
             </div>
 
             {/* 2. Middle Video (Taller) */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
+            <div className="order-1 md:order-2 snap-center shrink-0 w-[85vw] md:w-full aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-black relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
               <video
                 autoPlay
                 loop
@@ -135,7 +135,7 @@ export function Home() {
                     window.dispatchEvent(new Event("nelson-video-ready"));
                   }
                 }}
-                className="absolute inset-0 h-full w-full object-cover object-center scale-[1.35] md:scale-[1.5]"
+                className="absolute inset-0 h-full w-full object-contain object-center"
               >
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
               </video>
@@ -157,7 +157,7 @@ export function Home() {
             </div>
 
             {/* 3. Right Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="order-3 md:order-3 snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {rightImages.map((img, idx) => (
                 <img
                   key={img}

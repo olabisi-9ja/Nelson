@@ -19,24 +19,40 @@ export function Preloader() {
       return;
     }
 
-    // Fast progress timer (completes smoothly under 800ms)
     let current = 0;
+    // Quickly animate up to 90%
     const interval = setInterval(() => {
-      current += Math.floor(Math.random() * 15) + 12;
-      if (current >= 100) {
-        setPercent(100);
-        setVideoReady(true);
+      current += 15;
+      if (current >= 90) {
+        setPercent(90);
         clearInterval(interval);
-        setTimeout(() => {
-          setVisible(false);
-          sessionStorage.setItem("nelson-loaded", "true");
-        }, 300);
       } else {
         setPercent(current);
       }
-    }, 40);
+    }, 20);
 
-    return () => clearInterval(interval);
+    const finishPreloader = () => {
+      setPercent(100);
+      setVideoReady(true);
+      clearInterval(interval);
+      setTimeout(() => {
+        setVisible(false);
+        sessionStorage.setItem("nelson-loaded", "true");
+      }, 100);
+    };
+
+    if (document.readyState === "complete") {
+      finishPreloader();
+    } else {
+      window.addEventListener("load", finishPreloader);
+      // Fallback just in case load never fires or takes too long
+      setTimeout(finishPreloader, 1500);
+    }
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("load", finishPreloader);
+    };
   }, []);
 
 
