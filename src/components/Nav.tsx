@@ -98,7 +98,7 @@ export function Nav({ onSearch }: Props) {
             ) : (
             <button
               onClick={() => setAuthOpen(true)}
-              className="hidden text-xs font-semibold uppercase tracking-[0.15em] text-obsidian/80 transition hover:text-leather md:block"
+              className="hidden text-[10px] font-bold uppercase tracking-widest text-warm-white bg-obsidian px-5 py-2 rounded-full hover:bg-gold hover:text-obsidian transition duration-300 md:block border border-obsidian"
             >
               Sign In
             </button>
