@@ -46,6 +46,8 @@ export function Home() {
     }
   ];
 
+  const [scrollOffset, setScrollOffset] = useState(0);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setSlideIndex((prev) => (prev + 1) % 2);
@@ -53,13 +55,36 @@ export function Home() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollOffset(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="bg-warm-white text-obsidian font-sans">
       {/* HERO SECTION */}
       <section className="w-full pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
-          {/* Huge Logo text */}
-          <h1 className="w-[80vw] mx-auto text-center font-display text-[17vw] md:text-[14vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-6 md:mb-8">
+          {/* Subtitle above logo */}
+          <div className="w-full text-center text-[9px] md:text-[11px] font-bold uppercase tracking-[0.25em] text-obsidian/60 mb-4 px-4 leading-relaxed">
+            Lagos — Bespoke Luxury Footwear <br /> Handmade without compromise
+          </div>
+
+          {/* Divider line */}
+          <div className="w-full h-px bg-obsidian/10 mb-8" />
+
+          {/* Huge Logo text with scroll effect */}
+          <h1
+            style={{
+              transform: `translateY(${scrollOffset * 0.18}px)`,
+              opacity: Math.max(0.1, 1 - scrollOffset / 450),
+              letterSpacing: `${-0.05 + scrollOffset * 0.00003}em`
+            }}
+            className="w-[90vw] md:w-[80vw] mx-auto text-center font-display text-[17vw] md:text-[14vw] font-black uppercase text-obsidian leading-[0.8] select-none mb-10 will-change-transform"
+          >
             NELSON
           </h1>
 
