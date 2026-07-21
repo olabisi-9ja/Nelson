@@ -105,7 +105,11 @@ export function Home() {
                 loop
                 muted
                 playsInline
-                onCanPlay={() => window.dispatchEvent(new Event("nelson-video-ready"))}
+                onTimeUpdate={(e) => {
+                  if (e.currentTarget.currentTime > 0.15) {
+                    window.dispatchEvent(new Event("nelson-video-ready"));
+                  }
+                }}
                 className="absolute inset-0 h-full w-full object-cover object-center scale-[1.35] md:scale-[1.5]"
               >
                 <source src="/videos/hero-video.mp4" type="video/mp4" />

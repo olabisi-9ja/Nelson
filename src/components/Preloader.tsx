@@ -15,10 +15,10 @@ export function Preloader() {
     const handleVideoReady = () => setVideoReady(true);
     window.addEventListener("nelson-video-ready", handleVideoReady);
 
-    // Backup safety timeout (4s max)
+    // Backup safety timeout (10s max for slow connections)
     const backupTimer = setTimeout(() => {
       setVideoReady(true);
-    }, 4000);
+    }, 10000);
 
     return () => {
       window.removeEventListener("nelson-video-ready", handleVideoReady);
@@ -33,18 +33,35 @@ export function Preloader() {
       return;
     }
 
-    const interval = setInterval(() => {
+    let timer: any;
+    
+    const updateProgress = () => {
       setPercent((prev) => {
         if (prev >= 100) {
           return 100;
         }
-        const step = Math.floor(Math.random() * 12) + 4;
-        return Math.min(prev + step, 100);
-      });
-    }, 70);
 
-    return () => clearInterval(interval);
-  }, []);
+        // Cap progress at 95% until video is ready to play
+        if (!videoReady && prev >= 95) {
+          return 95;
+        }
+
+        // Fast-forward once video is ready, otherwise crawl steadily
+        const step = videoReady 
+          ? Math.floor(Math.random() * 20) + 15 
+          : Math.floor(Math.random() * 8) + 3;
+
+        const next = prev + step;
+        return next >= 100 ? 100 : next;
+      });
+
+      const nextDelay = videoReady ? 30 : 70;
+      timer = setTimeout(updateProgress, nextDelay);
+    };
+
+    timer = setTimeout(updateProgress, 70);
+    return () => clearTimeout(timer);
+  }, [videoReady]);
 
   useEffect(() => {
     if (percent === 100 && videoReady) {
