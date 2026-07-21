@@ -186,11 +186,11 @@ export function Home() {
             <p className="text-3xl font-bold leading-tight md:text-5xl lg:text-6xl tracking-tight text-obsidian text-balance">
               Crafted without compromise. Handmade luxury footwear built for excellence.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-8">
-              <Link to="/collections" className="rounded-full bg-obsidian px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-warm-white transition duration-300 hover:bg-leather">
+            <div className="mt-10 flex flex-row items-center justify-center gap-3 md:gap-8">
+              <Link to="/collections" className="rounded-full bg-obsidian px-6 md:px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-warm-white transition duration-300 hover:bg-leather whitespace-nowrap">
                 Collections
               </Link>
-              <Link to="/order" className="rounded-full border-2 border-obsidian px-8 py-3 text-xs font-bold uppercase tracking-widest text-obsidian transition duration-300 hover:bg-obsidian hover:text-warm-white">
+              <Link to="/order" className="rounded-full border-2 border-obsidian px-6 md:px-8 py-3 text-xs font-bold uppercase tracking-widest text-obsidian transition duration-300 hover:bg-obsidian hover:text-warm-white whitespace-nowrap">
                 Order Now
               </Link>
             </div>
