@@ -135,14 +135,18 @@ export function Home() {
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
               </video>
               
-              {/* Custom Poster Overlay: fades out smoothly only when frames are actively playing */}
-              <div className={`absolute inset-0 bg-warm-white transition-opacity duration-500 ${videoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-                <img
-                  src="/images/film-thumbnail.jpg"
-                  alt="Nelson Atelier Video Poster"
-                  className="h-full w-full object-cover object-center scale-[1.35] md:scale-[1.5]"
-                />
-                <div className="absolute inset-0 bg-black/10" />
+              {/* Custom Poster Overlay: Nelson logo with ripple effect, fades when video starts */}
+              <div className={`absolute inset-0 bg-obsidian transition-opacity duration-700 flex items-center justify-center ${videoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+                {/* Ripple rings */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute h-32 w-32 rounded-full border border-gold/30 animate-ping" style={{ animationDuration: "1.8s" }} />
+                  <div className="absolute h-48 w-48 rounded-full border border-gold/20 animate-ping" style={{ animationDuration: "2.4s", animationDelay: "0.3s" }} />
+                  <div className="absolute h-64 w-64 rounded-full border border-gold/10 animate-ping" style={{ animationDuration: "3s", animationDelay: "0.6s" }} />
+                </div>
+                {/* Centered NELSON logo text */}
+                <span className="relative z-10 font-display font-black uppercase tracking-[0.2em] text-gold text-3xl md:text-4xl select-none">
+                  NELSON
+                </span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
@@ -300,13 +304,13 @@ export function Home() {
             </div>
 
             {/* Right Video Player Column */}
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-black/40 group border border-white/5">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-black/40 group border border-white/5 flex items-center justify-center">
               <video
                 ref={interviewVideoRef}
                 loop
                 playsInline
                 muted={isMuted}
-                className="w-full h-full object-cover"
+                className="w-full h-auto max-h-[75vh] object-contain rounded-2xl"
               >
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
               </video>

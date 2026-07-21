@@ -15,10 +15,10 @@ export function Preloader() {
     const handleVideoReady = () => setVideoReady(true);
     window.addEventListener("nelson-video-ready", handleVideoReady);
 
-    // Backup safety timeout (10s max for slow connections)
+    // Backup safety timeout — 3s max (catches slow connections)
     const backupTimer = setTimeout(() => {
       setVideoReady(true);
-    }, 10000);
+    }, 3000);
 
     return () => {
       window.removeEventListener("nelson-video-ready", handleVideoReady);
