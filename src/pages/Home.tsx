@@ -9,6 +9,8 @@ export function Home() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const interviewVideoRef = useRef<HTMLVideoElement>(null);
+  
+  const [activeCraft, setActiveCraft] = useState<number | null>(null);
 
   const togglePlay = () => {
     if (interviewVideoRef.current) {
@@ -27,6 +29,21 @@ export function Home() {
       setIsMuted(!isMuted);
     }
   };
+
+  const craftItems = [
+    {
+      title: "Bespoke Fitting",
+      content: "We take detailed measurements of your feet using traditional calipers and drafts. A custom wooden last is then sculpted to match the unique volume and proportions of your feet, ensuring a perfect anatomical fit."
+    },
+    {
+      title: "Hand Welted Construction",
+      content: "The pinnacle of shoemaking. The upper, insole, and welt are stitched together entirely by hand using boar-bristle needles and waxed linen thread. This construction allows for maximum comfort and unlimited resoles."
+    },
+    {
+      title: "Premium Materials",
+      content: "Only full-grain leathers from legendary European tanneries make the cut. Every lining is breathable veg-tanned leather, and the footbed is packed with natural cork that molds to your footprint over time."
+    }
+  ];
 
   const leftImages = ["/images/oxford-shoe.jpg", "/images/loafer.jpg"];
   const rightImages = ["/images/chelsea-boot.jpg", "/images/product-hero.jpg"];
@@ -214,18 +231,29 @@ export function Home() {
             </Link>
 
             <div className="mt-16 border-t border-obsidian/20 pt-8">
-              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
-                <span className="font-bold">Bespoke Fitting</span>
-                <Plus className="h-5 w-5" />
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
-                <span className="font-bold">Hand Welted Construction</span>
-                <Plus className="h-5 w-5" />
-              </div>
-              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
-                <span className="font-bold">Premium Materials</span>
-                <Plus className="h-5 w-5" />
-              </div>
+              {craftItems.map((item, idx) => {
+                const isOpen = activeCraft === idx;
+                return (
+                  <div key={idx} className="border-b border-obsidian/10">
+                    <button
+                      onClick={() => setActiveCraft(isOpen ? null : idx)}
+                      className="flex w-full items-center justify-between py-4 text-left focus:outline-none"
+                    >
+                      <span className="font-bold">{item.title}</span>
+                      {isOpen ? <Minus className="h-5 w-5 text-gold" /> : <Plus className="h-5 w-5" />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        isOpen ? "max-h-32 pb-4 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p className="text-sm text-obsidian/70 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
