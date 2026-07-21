@@ -1,39 +1,96 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Plus } from "lucide-react";
 
 export function Home() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const leftImages = ["/images/oxford-shoe.jpg", "/images/loafer.jpg"];
+  const rightImages = ["/images/chelsea-boot.jpg", "/images/product-hero.jpg"];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % 2);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-warm-white text-obsidian font-sans">
-      {/* HERO SECTION - Video starts below Nav */}
-      <section className="w-full">
-        <div className="relative flex h-[100vh] w-full items-center justify-center overflow-hidden bg-obsidian">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover object-center opacity-80 scale-[1.35] md:scale-[1.5]"
-          >
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30" />
-          <div className="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-center text-white">
-            <h1 className="mb-4 text-sm font-bold uppercase tracking-widest md:text-base text-gold">
+      {/* HERO SECTION */}
+      <section className="w-full pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
+          {/* Huge Logo text */}
+          <h1 className="w-full text-center font-display text-[14vw] md:text-[11vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-12">
+            NELSON
+          </h1>
+
+          {/* Three Media Columns */}
+          <div className="flex w-full items-center justify-start md:justify-center gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden py-4 md:overflow-visible" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+            
+            {/* 1. Left Shoe Slideshow */}
+            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[50vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+              {leftImages.map((img, idx) => (
+                <img
+                  key={img}
+                  src={img}
+                  alt="Bespoke Shoe"
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                    idx === slideIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
+
+            {/* 2. Middle Video (Taller) */}
+            <div className="snap-center shrink-0 w-[75vw] md:w-[38%] aspect-[3/4] md:aspect-[9/14] md:h-[60vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover object-center scale-[1.35] md:scale-[1.5]"
+              >
+                <source src="/videos/hero-video.mp4" type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </div>
+
+            {/* 3. Right Shoe Slideshow */}
+            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[50vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+              {rightImages.map((img, idx) => (
+                <img
+                  key={img}
+                  src={img}
+                  alt="Luxury Boot"
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                    idx === slideIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </div>
+
+          </div>
+
+          {/* Brand statement & buttons */}
+          <div className="mt-16 text-center max-w-4xl px-4">
+            <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-gold">
               Lagos — Craftsmanship
-            </h1>
-            <p className="mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl tracking-tight">
+            </h2>
+            <p className="text-3xl font-bold leading-tight md:text-5xl lg:text-6xl tracking-tight text-obsidian text-balance">
               Crafted without compromise. Handmade luxury footwear built for excellence.
             </p>
-            <div className="absolute bottom-12 flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              <Link to="/collections" className="cursor-pointer border-b-2 border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:border-white">
+            <div className="mt-10 flex items-center justify-center gap-8">
+              <Link to="/collections" className="rounded-full bg-obsidian px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-warm-white transition duration-300 hover:bg-leather">
                 Collections
               </Link>
-              <Link to="/order" className="cursor-pointer border-b-2 border-gold text-gold pb-1 text-sm font-bold uppercase tracking-widest transition hover:text-white hover:border-white">
+              <Link to="/order" className="rounded-full border-2 border-obsidian px-8 py-3 text-xs font-bold uppercase tracking-widest text-obsidian transition duration-300 hover:bg-obsidian hover:text-warm-white">
                 Order Now
               </Link>
             </div>
           </div>
+
         </div>
       </section>
 
