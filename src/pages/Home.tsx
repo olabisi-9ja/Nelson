@@ -346,28 +346,20 @@ export function Home() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             
             {/* Left Column: Book Cover Showcase */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[340px] aspect-[2/3] rounded-lg bg-obsidian text-warm-white p-8 shadow-2xl flex flex-col justify-between border border-gold/30 transform transition duration-500 hover:scale-[1.03] select-none">
-                {/* Book design elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-charcoal/10 via-transparent to-black/40 rounded-lg pointer-events-none" />
-                <div className="absolute left-0 top-0 bottom-0 w-2.5 bg-black/35 rounded-l-lg pointer-events-none shadow-[inset_-2px_0_4px_rgba(255,255,255,0.05)]" />
-                
-                <div className="flex flex-col gap-2">
-                  <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-gold/80">Business & Positioning</span>
-                  <h3 className="font-display font-black text-3xl md:text-4xl tracking-tight leading-none text-balance mt-4 text-warm-white">
-                    THE <br /> DEMAND <br /> CODE
-                  </h3>
-                  <div className="h-0.5 w-12 bg-gold/60 mt-3" />
-                </div>
-                
-                <div className="flex flex-col gap-2 mt-8">
-                  <p className="text-xs italic text-cream/70 leading-relaxed font-medium">
-                    "Stop chasing customers. Make them chase you."
-                  </p>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-gold mt-6 border-t border-white/10 pt-3">
-                    Nelson Faseyiku
-                  </p>
-                </div>
+            <div className="relative flex justify-center lg:justify-start w-full max-w-[420px] mx-auto lg:mx-0 group mb-10 lg:mb-0">
+              <div className="w-[75%] rounded-xl overflow-hidden shadow-2xl transition duration-700 group-hover:scale-[1.02] border border-white/5">
+                <img 
+                  src="/images/nelson-author.jpg" 
+                  alt="Nelson Faseyiku - From Invisible to In-Demand" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-10 -right-4 w-[60%] transition duration-700 group-hover:scale-[1.05] group-hover:-translate-y-3 z-10">
+                <img 
+                  src="/images/book-mockup.png" 
+                  alt="The Demand Code Book Cover" 
+                  className="w-full h-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
+                />
               </div>
             </div>
 
