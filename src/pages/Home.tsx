@@ -29,9 +29,6 @@ export function Home() {
               <Link to="/collections" className="cursor-pointer border-b-2 border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:border-white">
                 Collections
               </Link>
-              <Link to="/craftsmanship" className="cursor-pointer border-b-2 border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:border-white">
-                Our Craft
-              </Link>
               <Link to="/order" className="cursor-pointer border-b-2 border-gold text-gold pb-1 text-sm font-bold uppercase tracking-widest transition hover:text-white hover:border-white">
                 Order Now
               </Link>
@@ -40,8 +37,36 @@ export function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: THE ART OF SHOEMAKING */}
+      {/* SECTION 1.5: FEATURED COLLECTIONS (SHOES) */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <div className="mb-12 flex items-end justify-between border-b border-obsidian/10 pb-8">
+          <h2 className="text-3xl font-black tracking-tight md:text-5xl">
+            Featured Collections
+          </h2>
+          <Link to="/collections" className="hidden items-center gap-2 font-bold uppercase tracking-widest text-obsidian hover:underline md:flex">
+            View All Shoes <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        
+        <div className="grid gap-8 md:grid-cols-3">
+          {[
+            { title: "Oxford", desc: "The language of power", img: "/images/oxford-shoe.jpg", link: "/collections/oxford" },
+            { title: "Chelsea", desc: "Effortless sophistication", img: "/images/chelsea-boot.jpg", link: "/collections/chelsea" },
+            { title: "Loafers", desc: "Relaxed refinement", img: "/images/loafer.jpg", link: "/collections/loafers" }
+          ].map((col, i) => (
+            <Link key={i} to={col.link} className="group cursor-pointer block">
+              <div className="mb-6 overflow-hidden rounded-xl bg-obsidian/5 aspect-[4/5]">
+                <img src={col.img} alt={col.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+              </div>
+              <h3 className="text-2xl font-black leading-tight group-hover:underline">{col.title}</h3>
+              <p className="mt-2 text-sm font-medium uppercase tracking-widest text-obsidian/60">{col.desc}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 2: THE ART OF SHOEMAKING */}
+      <section className="mx-auto max-w-7xl px-6 py-12 md:py-24">
         <div className="mb-16 md:w-2/3">
           <h2 className="text-5xl font-black tracking-tight md:text-7xl lg:text-8xl leading-none">
             The art of <br /> shoemaking.
