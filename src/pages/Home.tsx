@@ -17,10 +17,10 @@ export function Home() {
   return (
     <div className="bg-warm-white text-obsidian font-sans">
       {/* HERO SECTION */}
-      <section className="w-full pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+      <section className="w-full pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
           {/* Huge Logo text */}
-          <h1 className="w-full text-center font-display text-[14vw] md:text-[11vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-12">
+          <h1 className="w-full text-center font-display text-[14vw] md:text-[11vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-6 md:mb-8">
             NELSON
           </h1>
 
@@ -28,7 +28,7 @@ export function Home() {
           <div className="flex w-full items-center justify-start md:justify-center gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden py-4 md:overflow-visible" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             
             {/* 1. Left Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[50vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {leftImages.map((img, idx) => (
                 <img
                   key={img}
@@ -43,7 +43,7 @@ export function Home() {
             </div>
 
             {/* 2. Middle Video (Taller) */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-[38%] aspect-[3/4] md:aspect-[9/14] md:h-[60vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
+            <div className="snap-center shrink-0 w-[75vw] md:w-[38%] aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
               <video
                 autoPlay
                 loop
@@ -57,7 +57,7 @@ export function Home() {
             </div>
 
             {/* 3. Right Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[50vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {rightImages.map((img, idx) => (
                 <img
                   key={img}
