@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-21T11:40:00Z",
+  "title": "Design System: Nelson",
+  "extensions": {
+    "colorMeta": {
+      "obsidian": { "role": "neutral", "displayName": "Obsidian", "canonical": "oklch(10% 0 0)", "tonalRamp": ["#0a0a0a", "#111111", "#1a1a1a", "#262626", "#404040", "#737373", "#a3a3a3", "#e5e5e5"] },
+      "gold": { "role": "primary", "displayName": "Gold", "canonical": "oklch(70% 0.15 80)", "tonalRamp": ["#3b2f17", "#634e24", "#8b6e31", "#b38e3e", "#c5a059", "#d9b978", "#e3cd9c", "#f1e5cd"] },
+      "warm-white": { "role": "neutral", "displayName": "Warm White", "canonical": "oklch(98% 0.005 85)", "tonalRamp": ["#1a1918", "#33312f", "#4d4a46", "#807b75", "#b3aca3", "#d9d4cc", "#faf9f6", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only" },
+      "headline": { "displayName": "Headline", "purpose": "Section H2 titles" }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for transitions" }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button used for main CTA.",
+      "html": "<button class=\"ds-btn-primary\">ORDER NOW</button>",
+      "css": ".ds-btn-primary { background: #c5a059; color: #0a0a0a; padding: 16px 32px; font-weight: 600; border-radius: 2px; border: none; font-family: sans-serif; cursor: pointer; transition: background 0.2s; } .ds-btn-primary:hover { background: #d9b978; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action button.",
+      "html": "<button class=\"ds-btn-secondary\">COLLECTIONS</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #c5a059; padding: 16px 32px; font-weight: 600; border-radius: 2px; border: 2px solid #c5a059; font-family: sans-serif; cursor: pointer; transition: color 0.2s, border-color 0.2s; } .ds-btn-secondary:hover { color: #d9b978; border-color: #d9b978; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Minimalist Wolverine",
+    "overview": "The design system is a bold, high-contrast visual identity designed for bespoke luxury. It rejects generic SaaS and startup aesthetics in favor of a raw, craftsmanship-focused layout. The theme features a light-themed, asymmetrical grid structure on the homepage (bg-warm-white) that acts as a museum showcase for the physical footwear. The inner pages utilize a deep, premium dark layout (bg-obsidian) to house workflows like the custom order experience. Spacing is fluid, layouts are asymmetric, and content visibility is never gated.",
+    "keyCharacteristics": [
+      "High-contrast, typography-driven layouts.",
+      "Rejection of generic SaaS shadows and rounded cards.",
+      "Dark theme for custom order tools, light theme for brand storytelling."
+    ],
+    "rules": [
+      { "name": "The High-Contrast Ground Rule", "body": "Body text must always meet a minimum 4.5:1 contrast ratio. Muted gray text is strictly forbidden; text must be crisp obsidian on light pages, or warm-white on dark pages.", "section": "colors" },
+      { "name": "The Gold Accent Rule", "body": "Gold is a highlight, not a paint bucket. Keep gold usage to <=10% of any view to preserve its premium, exclusive feel.", "section": "colors" },
+      { "name": "The Display Tracking Floor Rule", "body": "Tightly tracked titles must never go below -0.04em tracking to prevent letter overlap.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces must remain flat. There are no box shadows, drop shadows, or layered glass blurs. We build visual hierarchy with sharp boundaries and contrasting background fills.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use asymmetrical layouts for product showcases.",
+      "Do maintain a strict flat aesthetic without shadows.",
+      "Do center background videos and crop out black margins using CSS."
+    ],
+    "donts": [
+      "Don't use SaaS template elements (like rounded icons above headings, glassmorphic cards).",
+      "Don't use neon, purple gradients, or generic startup colors.",
+      "Don't write body text in light gray; keep contrast high and crisp."
+    ]
+  }
+}
