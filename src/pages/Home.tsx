@@ -68,14 +68,6 @@ export function Home() {
       {/* HERO SECTION */}
       <section className="w-full pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
-          {/* Subtitle above logo */}
-          <div className="w-full text-center text-[9px] md:text-[11px] font-bold uppercase tracking-[0.25em] text-obsidian/60 mb-4 px-4 leading-relaxed">
-            Lagos — Bespoke Luxury Footwear <br /> Handmade without compromise
-          </div>
-
-          {/* Divider line */}
-          <div className="w-full h-px bg-obsidian/10 mb-8" />
-
           {/* Huge Logo text with scroll effect */}
           <h1
             style={{
