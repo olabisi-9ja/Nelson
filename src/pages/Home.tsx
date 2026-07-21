@@ -211,7 +211,15 @@ export function Home() {
           ].map((col, i) => (
             <Link key={i} to={col.link} className="group cursor-pointer block">
               <div className="mb-4 overflow-hidden rounded-xl bg-obsidian/5 aspect-[3/4]">
-                <img src={col.img} alt={col.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img 
+                  src={col.img} 
+                  alt={col.title} 
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="533"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105" 
+                />
               </div>
               <h3 className="text-lg font-bold leading-tight group-hover:underline">{col.title}</h3>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-obsidian/60">{col.desc}</p>
@@ -233,6 +241,10 @@ export function Home() {
             <img 
               src="/images/craft-hands.jpg" 
               alt="Artisan crafting a shoe" 
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="400"
               className="h-full w-full object-cover"
             />
           </div>
