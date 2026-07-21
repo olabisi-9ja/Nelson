@@ -1,11 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Plus } from "lucide-react";
+import { ArrowRight, Plus, Minus } from "lucide-react";
 
 export function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
   const leftImages = ["/images/oxford-shoe.jpg", "/images/loafer.jpg"];
   const rightImages = ["/images/chelsea-boot.jpg", "/images/product-hero.jpg"];
+
+  const faqItems = [
+    {
+      title: "Shoe Care Guide",
+      content: "To maintain your hand-welted shoes, brush them regularly with a horsehair brush to remove dirt. Condition the leather every 6-8 weeks with a premium cream conditioner, and use cedar shoe trees when not in wear to preserve their shape and absorb moisture."
+    },
+    {
+      title: "Patina & Aging",
+      content: "Our vegetable-tanned and box calf leathers are designed to develop a unique patina over time. Regular wear, exposure to air, and polish will burnish the edges and creases, resulting in a rich, deeply personal character that cannot be replicated artificially."
+    },
+    {
+      title: "Repair Services",
+      content: "Nelson footwear is built to last a lifetime. Our Goodyear welted and hand-welted construction means the entire sole can be replaced. We offer full resoling, heel replacement, and refurbishing services at our studio."
+    }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -265,18 +282,29 @@ export function Home() {
           </div>
           <div>
             <div className="border-t border-obsidian/20">
-              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
-                <span className="text-xl font-bold">Shoe Care Guide</span>
-                <Plus className="h-6 w-6" />
-              </div>
-              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
-                <span className="text-xl font-bold">Patina & Aging</span>
-                <Plus className="h-6 w-6" />
-              </div>
-              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
-                <span className="text-xl font-bold">Repair Services</span>
-                <Plus className="h-6 w-6" />
-              </div>
+              {faqItems.map((item, idx) => {
+                const isOpen = activeFaq === idx;
+                return (
+                  <div key={idx} className="border-b border-obsidian/10">
+                    <button
+                      onClick={() => setActiveFaq(isOpen ? null : idx)}
+                      className="flex w-full items-center justify-between py-6 text-left focus:outline-none"
+                    >
+                      <span className="text-xl font-bold">{item.title}</span>
+                      {isOpen ? <Minus className="h-6 w-6 text-gold" /> : <Plus className="h-6 w-6" />}
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${
+                        isOpen ? "max-h-40 pb-6 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <p className="text-sm text-obsidian/70 leading-relaxed">
+                        {item.content}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
