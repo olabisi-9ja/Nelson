@@ -108,6 +108,11 @@ export function Home() {
                   key={img}
                   src={img}
                   alt="Bespoke Shoe"
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                  decoding="async"
+                  width="500"
+                  height="667"
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                     idx === slideIndex ? "opacity-100" : "opacity-0"
                   }`}
@@ -158,6 +163,11 @@ export function Home() {
                   key={img}
                   src={img}
                   alt="Luxury Boot"
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                  decoding="async"
+                  width="500"
+                  height="667"
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
                     idx === slideIndex ? "opacity-100" : "opacity-0"
                   }`}
