@@ -13,26 +13,26 @@ export function Home() {
             loop
             muted
             playsInline
-            className="absolute inset-0 h-full w-full object-cover opacity-80"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-80"
           >
             <source src="/videos/hero-video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/30" />
           <div className="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-center text-white">
-            <h1 className="mb-4 text-sm font-bold uppercase tracking-widest md:text-base">
+            <h1 className="mb-4 text-sm font-bold uppercase tracking-widest md:text-base text-gold">
               Lagos — Craftsmanship
             </h1>
-            <p className="mx-auto max-w-3xl text-3xl font-bold leading-tight md:text-5xl lg:text-6xl tracking-tight">
+            <p className="mx-auto max-w-4xl text-4xl font-bold leading-tight md:text-6xl lg:text-7xl tracking-tight">
               Crafted without compromise. Handmade luxury footwear built for excellence.
             </p>
-            <div className="absolute bottom-8 flex gap-4">
-              <Link to="/collections" className="cursor-pointer border-b-2 border-transparent pb-1 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white hover:border-white">
+            <div className="absolute bottom-12 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+              <Link to="/collections" className="cursor-pointer border-b-2 border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:border-white">
                 Collections
               </Link>
-              <Link to="/craftsmanship" className="cursor-pointer border-b-2 border-transparent pb-1 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white hover:border-white">
+              <Link to="/craftsmanship" className="cursor-pointer border-b-2 border-transparent pb-1 text-sm font-bold uppercase tracking-widest text-white/80 transition hover:text-white hover:border-white">
                 Our Craft
               </Link>
-              <Link to="/order" className="cursor-pointer border-b-2 border-transparent pb-1 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white hover:border-white">
+              <Link to="/order" className="cursor-pointer border-b-2 border-gold text-gold pb-1 text-sm font-bold uppercase tracking-widest transition hover:text-white hover:border-white">
                 Order Now
               </Link>
             </div>
@@ -51,7 +51,7 @@ export function Home() {
         <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
           <div className="overflow-hidden rounded-xl">
             <img 
-              src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=1200" 
+              src="/images/craft-hands.jpg" 
               alt="Artisan crafting a shoe" 
               className="h-full w-full object-cover"
             />
@@ -89,7 +89,7 @@ export function Home() {
       <section className="w-full">
         <div className="relative h-[60vh] w-full bg-obsidian">
           <img 
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=2000" 
+            src="/images/hero-workshop.jpg" 
             alt="Leather workshop" 
             className="absolute inset-0 h-full w-full object-cover opacity-60"
           />
@@ -138,9 +138,9 @@ export function Home() {
         
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { title: "The Anatomy of a Hand-Welted Shoe", date: "Oct 12, 2024", img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=800" },
-            { title: "Selecting the Finest Italian Calfskin", date: "Sep 28, 2024", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800" },
-            { title: "A Day in the Lagos Studio", date: "Sep 15, 2024", img: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&q=80&w=800" }
+            { title: "The Anatomy of a Hand-Welted Shoe", date: "Oct 12, 2024", img: "/images/oxford-shoe.jpg" },
+            { title: "Selecting the Finest Italian Calfskin", date: "Sep 28, 2024", img: "/images/chelsea-boot.jpg" },
+            { title: "A Day in the Lagos Studio", date: "Sep 15, 2024", img: "/images/loafer.jpg" }
           ].map((post, i) => (
             <Link key={i} to="/journal" className="group cursor-pointer block">
               <div className="mb-4 overflow-hidden rounded-lg bg-obsidian/5 aspect-[4/3]">
@@ -160,7 +160,7 @@ export function Home() {
         </h2>
         <div className="mb-16 w-full overflow-hidden rounded-xl">
           <img 
-            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=2000" 
+            src="/images/product-hero.jpg" 
             alt="Classic footwear" 
             className="w-full object-cover aspect-[21/9]"
           />
@@ -208,7 +208,7 @@ export function Home() {
         <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
           <div className="overflow-hidden rounded-xl">
             <img 
-              src="https://images.unsplash.com/photo-1551524164-687a55dd1126?auto=format&fit=crop&q=80&w=1200" 
+              src="/images/about-workshop.jpg" 
               alt="Leather tannery" 
               className="h-full w-full object-cover aspect-[4/5]"
             />
