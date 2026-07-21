@@ -47,16 +47,15 @@ export function Collections() {
         <div className="grid gap-8 md:grid-cols-2">
           {filtered.map((c, idx) => (
             <SectionReveal key={c.id} delay={idx * 0.08}>
-              <Link to={`/collections/${c.slug}`} className="group relative block overflow-hidden rounded-sm">
-                <div className="aspect-[16/10]">
+              <Link to={`/collections/${c.slug}`} className="group block">
+                <div className="overflow-hidden rounded-xl bg-obsidian/20 aspect-[4/5] md:aspect-[16/10]">
                   <img
                     src={c.banner}
                     alt={c.name}
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
                 </div>
-                <div className="absolute bottom-0 left-0 p-8 md:p-10">
+                <div className="mt-6 md:mt-8">
                   <p className="text-xs uppercase tracking-[0.2em] text-gold">{c.subtitle}</p>
                   <h2 className="mt-2 font-display text-3xl text-warm-white md:text-4xl">
                     {c.name}

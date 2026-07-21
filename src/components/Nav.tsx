@@ -12,9 +12,7 @@ interface Props {
 
 const links = [
   { label: "Collections", to: "/collections" },
-  { label: "Craftsmanship", to: "/craftsmanship" },
   { label: "Journal", to: "/journal" },
-  { label: "Film", to: "/film" },
   { label: "Masterclass", to: "/masterclass" },
   { label: "Private Clients", to: "/private-clients" },
   { label: "About", to: "/about" },
@@ -132,16 +130,16 @@ export function Nav({ onSearch }: Props) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-obsidian/98 backdrop-blur-xl"
+            className="fixed inset-0 z-50 bg-obsidian/98 backdrop-blur-xl overflow-y-auto"
           >
-            <div className="flex h-full flex-col px-8 py-6">
+            <div className="flex min-h-full flex-col px-8 py-6">
               <div className="flex items-center justify-between">
                 <span className="font-display text-2xl text-warm-white">Nelson</span>
                 <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
                   <X className="h-7 w-7 text-cream" />
                 </button>
               </div>
-              <nav className="mt-16 flex flex-col gap-6">
+              <nav className="mt-12 flex flex-col gap-6 pb-20">
                 {links.map((l, i) => (
                   <motion.div
                     key={l.to}
