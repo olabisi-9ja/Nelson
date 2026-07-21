@@ -750,6 +750,8 @@ function CMSTab() {
             <Input label="Title" value={editing.title} onChange={(v) => setEditing({ ...editing, title: v })} />
             <Input label="Category" value={editing.category} onChange={(v) => setEditing({ ...editing, category: v })} />
             <Input label="Slug" value={editing.slug} onChange={(v) => setEditing({ ...editing, slug: v })} />
+            <Input label="Image URL" value={editing.image} onChange={(v) => setEditing({ ...editing, image: v })} />
+            <Input label="Excerpt" value={editing.excerpt} onChange={(v) => setEditing({ ...editing, excerpt: v })} />
             <TextArea label="Content" value={editing.content} onChange={(v) => setEditing({ ...editing, content: v })} rows={6} />
           </div>
           <div className="mt-6 flex justify-end gap-3">

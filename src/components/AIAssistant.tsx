@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, X, Send, Sparkles } from "lucide-react";
+import { Bot, X, Send, Sparkles, MessageCircle } from "lucide-react";
 import { products } from "@/data/mock";
 
 interface Message {
@@ -127,9 +127,21 @@ export function AIAssistant() {
                   <p className="text-[10px] uppercase tracking-widest text-chrome">AI Assistant</p>
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} aria-label="Close">
-                <X className="h-4 w-4 text-chrome hover:text-warm-white" />
-              </button>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://wa.me/2349012345678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full hover:bg-emerald-500/20 transition font-bold"
+                  title="Talk to a Human Concierge"
+                >
+                  <MessageCircle className="h-3.5 w-3.5" />
+                  <span>Talk to Human</span>
+                </a>
+                <button onClick={() => setOpen(false)} aria-label="Close">
+                  <X className="h-4 w-4 text-chrome hover:text-warm-white" />
+                </button>
+              </div>
             </div>
             <div className="h-80 space-y-4 overflow-y-auto p-5">
               {messages.map((m, i) => (
