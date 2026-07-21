@@ -22,8 +22,8 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--color-warm-white);
-  color: var(--color-obsidian);
+  background-color: var(--color-obsidian);
+  color: var(--color-warm-white);
   overflow-x: hidden;
 }
 
