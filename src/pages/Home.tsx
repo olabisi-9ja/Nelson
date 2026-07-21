@@ -15,7 +15,7 @@ export function Home() {
             playsInline
             className="absolute inset-0 h-full w-full object-cover opacity-80"
           >
-            <source src="/videos/Nelson header video.mp4" type="video/mp4" />
+            <source src="/videos/hero-video.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-center text-white">
