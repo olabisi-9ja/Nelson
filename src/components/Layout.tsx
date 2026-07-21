@@ -9,6 +9,7 @@ import { ScrollToTop } from "./ScrollToTop";
 import { AIAssistant } from "./AIAssistant";
 import { CartDrawer } from "./CartDrawer";
 import { PageTransition } from "./PageTransition";
+import { Preloader } from "./Preloader";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { Toaster } from "react-hot-toast";
 
@@ -23,6 +24,7 @@ export function Layout() {
 
   return (
     <div className="min-h-screen">
+      <Preloader />
       <Nav onSearch={() => setSearchOpen(true)} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <AuthModal />

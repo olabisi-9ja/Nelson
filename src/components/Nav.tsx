@@ -213,9 +213,9 @@ function UserMenu({
       <button
         onClick={() => setOpen(!open)}
         aria-label="Account menu"
-        className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-cream/80 transition hover:border-gold/40 hover:text-gold"
+        className="flex items-center justify-center text-obsidian/80 transition hover:text-leather"
       >
-        <User className="h-4 w-4" />
+        <User className="h-5 w-5" />
       </button>
       <AnimatePresence>
         {open && (

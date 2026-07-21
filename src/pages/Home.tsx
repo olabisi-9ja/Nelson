@@ -37,7 +37,7 @@ export function Home() {
       <section className="w-full pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
           {/* Huge Logo text */}
-          <h1 className="w-full text-center font-display text-[14vw] md:text-[11vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-6 md:mb-8">
+          <h1 className="w-[80vw] mx-auto text-center font-display text-[17vw] md:text-[14vw] font-black uppercase tracking-tighter text-obsidian leading-[0.8] select-none mb-6 md:mb-8">
             NELSON
           </h1>
 
@@ -109,9 +109,7 @@ export function Home() {
           </div>
 
         </div>
-      </section>
-
-      {/* SECTION 1.5: FEATURED COLLECTIONS (SHOES) */}
+      </section>      {/* SECTION 1.5: FEATURED COLLECTIONS (SHOES) */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
         <div className="mb-12 flex items-end justify-between border-b border-obsidian/10 pb-8">
           <h2 className="text-3xl font-black tracking-tight md:text-5xl">
@@ -122,22 +120,27 @@ export function Home() {
           </Link>
         </div>
         
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 grid-cols-2 lg:grid-cols-4">
           {[
-            { title: "Oxford", desc: "The language of power", img: "/images/oxford-shoe.jpg", link: "/collections/oxford" },
-            { title: "Chelsea", desc: "Effortless sophistication", img: "/images/chelsea-boot.jpg", link: "/collections/chelsea" },
-            { title: "Loafers", desc: "Relaxed refinement", img: "/images/loafer.jpg", link: "/collections/loafers" }
+            { title: "The Regent Oxford", desc: "Closed-Lacing Elegance", img: "/images/oxford-shoe.jpg", link: "/product/regent-oxford" },
+            { title: "The Duke Chelsea", desc: "Effortless Sophistication", img: "/images/chelsea-boot.jpg", link: "/product/duke-chelsea" },
+            { title: "The Patrician Loafer", desc: "Relaxed Refinement", img: "/images/loafer.jpg", link: "/product/patrician-loafer" },
+            { title: "The Sovereign Formal", desc: "Black Tie, Elevated", img: "/images/product-hero.jpg", link: "/product/sovereign-formal" },
+            { title: "The Sentinel Boot", desc: "Built for Legacy", img: "/images/about-workshop.jpg", link: "/product/sentinel-boot" },
+            { title: "Edition I — Akwaaba", desc: "Rare by Design", img: "/images/hero-workshop.jpg", link: "/product/edition-i" },
+            { title: "The Artisan Derby", desc: "Everyday Distinction", img: "/images/craft-hands.jpg", link: "/collections" },
+            { title: "The Royal Double Monk", desc: "Uncompromising Statement", img: "/images/product-hero.jpg", link: "/collections" }
           ].map((col, i) => (
             <Link key={i} to={col.link} className="group cursor-pointer block">
-              <div className="mb-6 overflow-hidden rounded-xl bg-obsidian/5 aspect-[4/5]">
-                <img src={col.img} alt={col.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+              <div className="mb-4 overflow-hidden rounded-xl bg-obsidian/5 aspect-[3/4]">
+                <img src={col.img} alt={col.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
               </div>
-              <h3 className="text-2xl font-black leading-tight group-hover:underline">{col.title}</h3>
-              <p className="mt-2 text-sm font-medium uppercase tracking-widest text-obsidian/60">{col.desc}</p>
+              <h3 className="text-lg font-bold leading-tight group-hover:underline">{col.title}</h3>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-obsidian/60">{col.desc}</p>
             </Link>
           ))}
         </div>
-      </section>
+      </section>n>
 
       {/* SECTION 2: THE ART OF SHOEMAKING */}
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-24">
