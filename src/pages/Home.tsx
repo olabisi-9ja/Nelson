@@ -129,6 +129,7 @@ export function Home() {
                 muted
                 playsInline
                 preload="metadata"
+                poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 onTimeUpdate={(e) => {
                   if (e.currentTarget.currentTime > 0.15) {
                     setVideoLoaded(true);
