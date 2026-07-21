@@ -4,6 +4,27 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Preloader() {
   const [percent, setPercent] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    // If not homepage, we don't wait for video
+    if (window.location.pathname !== "/") {
+      setVideoReady(true);
+    }
+
+    const handleVideoReady = () => setVideoReady(true);
+    window.addEventListener("nelson-video-ready", handleVideoReady);
+
+    // Backup safety timeout (4s max)
+    const backupTimer = setTimeout(() => {
+      setVideoReady(true);
+    }, 4000);
+
+    return () => {
+      window.removeEventListener("nelson-video-ready", handleVideoReady);
+      clearTimeout(backupTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const hasLoaded = sessionStorage.getItem("nelson-loaded");
@@ -15,11 +36,6 @@ export function Preloader() {
     const interval = setInterval(() => {
       setPercent((prev) => {
         if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setVisible(false);
-            sessionStorage.setItem("nelson-loaded", "true");
-          }, 500);
           return 100;
         }
         const step = Math.floor(Math.random() * 12) + 4;
@@ -29,6 +45,16 @@ export function Preloader() {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (percent === 100 && videoReady) {
+      const timer = setTimeout(() => {
+        setVisible(false);
+        sessionStorage.setItem("nelson-loaded", "true");
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [percent, videoReady]);
 
   return (
     <AnimatePresence>

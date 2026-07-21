@@ -1,10 +1,32 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Plus, Minus } from "lucide-react";
+import { ArrowRight, Plus, Minus, Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 export function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const interviewVideoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (interviewVideoRef.current) {
+      if (isPlaying) {
+        interviewVideoRef.current.pause();
+      } else {
+        interviewVideoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (interviewVideoRef.current) {
+      interviewVideoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   const leftImages = ["/images/oxford-shoe.jpg", "/images/loafer.jpg"];
   const rightImages = ["/images/chelsea-boot.jpg", "/images/product-hero.jpg"];
@@ -42,10 +64,10 @@ export function Home() {
           </h1>
 
           {/* Three Media Columns */}
-          <div className="flex w-full items-center justify-start md:justify-center gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden py-4 md:overflow-visible" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <div className="flex w-full items-center justify-start gap-6 overflow-x-auto snap-x snap-mandatory [&::-webkit-scrollbar]:hidden py-4 md:grid md:grid-cols-[28%_1fr_28%] md:overflow-hidden md:gap-6" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             
             {/* 1. Left Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {leftImages.map((img, idx) => (
                 <img
                   key={img}
@@ -60,12 +82,13 @@ export function Home() {
             </div>
 
             {/* 2. Middle Video (Taller) */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-[38%] aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
+            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
+                onCanPlay={() => window.dispatchEvent(new Event("nelson-video-ready"))}
                 className="absolute inset-0 h-full w-full object-cover object-center scale-[1.35] md:scale-[1.5]"
               >
                 <source src="/videos/hero-video.mp4" type="video/mp4" />
@@ -74,7 +97,7 @@ export function Home() {
             </div>
 
             {/* 3. Right Shoe Slideshow */}
-            <div className="snap-center shrink-0 w-[75vw] md:w-1/3 aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
+            <div className="snap-center shrink-0 w-[75vw] md:w-full aspect-[3/4] md:h-[65vh] rounded-[2rem] overflow-hidden bg-charcoal/5 relative transition-all duration-700 hover:scale-[1.02] border border-obsidian/5">
               {rightImages.map((img, idx) => (
                 <img
                   key={img}
@@ -187,42 +210,66 @@ export function Home() {
         </div>
       </section>
 
-      {/* SECTION 3: BEHIND THE SEAMS */}
-      <section className="w-full">
-        <div className="relative h-[60vh] w-full bg-obsidian">
-          <img 
-            src="/images/hero-workshop.jpg" 
-            alt="Leather workshop" 
-            className="absolute inset-0 h-full w-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-            <h2 className="text-5xl font-black text-white md:text-7xl lg:text-8xl tracking-tight">
-              Behind the <br /> seams.
-            </h2>
-          </div>
-        </div>
-        <div className="bg-obsidian px-6 py-16 text-white md:py-24">
-          <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-2">
+      {/* SECTION 3: MEET NELSON */}
+      <section className="bg-obsidian text-white py-24 md:py-32 px-6">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            
+            {/* Left Content Column */}
             <div>
-              <p className="text-2xl font-bold md:text-3xl leading-tight">
-                Our short films document the meticulous process and unwavering dedication poured into every Nelson pair.
+              <span className="text-xs font-bold uppercase tracking-widest text-gold">Meet the Artisan</span>
+              <h2 className="mt-4 text-4xl font-black md:text-6xl tracking-tight leading-none text-balance">
+                Meet <br className="hidden md:block" /> Nelson
+              </h2>
+              <p className="mt-6 text-lg text-white/80 leading-relaxed max-w-xl text-balance">
+                An intimate look into the philosophy, heritage, and uncompromising standards of Nelson's founder. Every shoe is built by hand in our Lagos studio, designed to last a lifetime.
               </p>
-            </div>
-            <div className="flex flex-col justify-end">
-              <div className="mb-8 flex gap-12 border-b border-white/20 pb-8">
+              
+              <div className="mt-12 flex gap-12 border-t border-white/10 pt-8 max-w-md">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-white/60">Hours of Craft</p>
-                  <p className="text-4xl font-black mt-2">40+</p>
+                  <p className="text-xs uppercase tracking-widest text-white/50">Hours of Craft</p>
+                  <p className="text-4xl font-black mt-2 text-gold">40+</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-white/60">Stitches per shoe</p>
-                  <p className="text-4xl font-black mt-2">1,200</p>
+                  <p className="text-xs uppercase tracking-widest text-white/50">Stitches per shoe</p>
+                  <p className="text-4xl font-black mt-2 text-gold">1,200</p>
                 </div>
               </div>
-              <Link to="/film" className="flex items-center gap-2 font-bold uppercase tracking-widest hover:underline">
-                Watch the films <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
+
+            {/* Right Video Player Column */}
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-black/40 group border border-white/5">
+              <video
+                ref={interviewVideoRef}
+                loop
+                playsInline
+                muted={isMuted}
+                className="w-full h-full object-cover"
+              >
+                <source src="/videos/hero-video.mp4" type="video/mp4" />
+              </video>
+              
+              {/* Overlay / Custom controls */}
+              <div className={`absolute inset-0 bg-black/30 transition-opacity duration-300 flex items-center justify-center ${isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}>
+                <button
+                  onClick={togglePlay}
+                  className="flex h-16 w-16 items-center justify-center rounded-full bg-gold text-obsidian shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                >
+                  {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6 fill-current translate-x-[2px]" />}
+                </button>
+              </div>
+
+              {/* Mute toggle button (always visible at bottom corner) */}
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur transition hover:bg-black/75 cursor-pointer"
+                aria-label={isMuted ? "Unmute" : "Mute"}
+              >
+                {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              </button>
+            </div>
+
           </div>
         </div>
       </section>
