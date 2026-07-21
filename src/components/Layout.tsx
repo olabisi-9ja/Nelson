@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Nav } from "./Nav";
@@ -16,6 +16,10 @@ export function Layout() {
   const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
   useSmoothScroll();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-obsidian text-warm-white">
