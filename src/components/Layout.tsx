@@ -5,7 +5,7 @@ import { Nav } from "./Nav";
 import { Footer } from "./Footer";
 import { SearchOverlay } from "./SearchOverlay";
 import { AuthModal } from "./AuthModal";
-import { WorkshopAmbience } from "./WorkshopAmbience";
+import { ScrollToTop } from "./ScrollToTop";
 import { AIAssistant } from "./AIAssistant";
 import { CartDrawer } from "./CartDrawer";
 import { PageTransition } from "./PageTransition";
@@ -30,7 +30,7 @@ export function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
-      <WorkshopAmbience />
+      <ScrollToTop />
       <AIAssistant />
       <CartDrawer />
       <Toaster

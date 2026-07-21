@@ -49,15 +49,55 @@ export function AIAssistant() {
     return "I can help with size recommendations, leather guidance, product suggestions, pricing, and production timelines. What would you like to explore?";
   };
 
-  const handleSend = (e: React.FormEvent) => {
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
     const userMsg = input.trim();
     setMessages((m) => [...m, { role: "user", text: userMsg }]);
     setInput("");
-    setTimeout(() => {
-      setMessages((m) => [...m, { role: "assistant", text: reply(userMsg) }]);
-    }, 600);
+
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+    if (!apiKey) {
+      // Fallback to mock responses if no API key is provided
+      setTimeout(() => {
+        setMessages((m) => [...m, { role: "assistant", text: reply(userMsg) }]);
+      }, 600);
+      return;
+    }
+
+    try {
+      // Create a temporary "typing" message
+      setMessages((m) => [...m, { role: "assistant", text: "..." }]);
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: "user",
+              parts: [{ text: `You are Nelson's digital concierge, a luxury shoemaker assistant. Be very polite, brief, and luxurious. Answer this: ${userMsg}` }]
+            }
+          ]
+        })
+      });
+
+      const data = await response.json();
+      const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I am unable to process that request at the moment.";
+      
+      setMessages((m) => {
+        const newM = [...m];
+        newM[newM.length - 1] = { role: "assistant", text: aiText };
+        return newM;
+      });
+    } catch (error) {
+      setMessages((m) => {
+        const newM = [...m];
+        newM[newM.length - 1] = { role: "assistant", text: "I apologize, but my connection was interrupted." };
+        return newM;
+      });
+    }
   };
 
   return (

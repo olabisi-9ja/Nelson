@@ -44,7 +44,7 @@ export function Home() {
       <section className="px-3 pb-3 pt-3 sm:px-4 sm:pb-4 sm:pt-4 md:px-6 md:pb-6 md:pt-6">
         <div
           ref={heroRef}
-          className="relative flex min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] w-full items-center justify-center overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem]"
+          className="relative flex min-h-[calc(100svh-1.5rem)] sm:min-h-[calc(100svh-2rem)] md:min-h-[calc(100svh-3rem)] w-full items-center justify-center overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem]"
         >
           <video
             ref={heroBgRef}
