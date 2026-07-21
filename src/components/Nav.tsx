@@ -43,18 +43,18 @@ export function Nav({ onSearch }: Props) {
     <>
       <header
         className={cn(
-          "fixed left-0 right-0 top-0 z-40 transition-all duration-500",
+          "sticky top-0 z-40 transition-all duration-500",
           scrolled || mobileOpen
-            ? "border-b border-white/5 bg-obsidian/90 py-4 backdrop-blur-md"
-            : "bg-transparent py-6"
+            ? "border-b border-black/10 bg-warm-white/95 py-4 backdrop-blur-md shadow-sm"
+            : "bg-warm-white py-6"
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
           <Link to="/" className="group flex items-center gap-3">
-            <span className="font-display text-2xl tracking-tight text-warm-white transition group-hover:text-gold md:text-3xl">
+            <span className="font-display text-2xl tracking-tight text-obsidian transition group-hover:text-leather md:text-3xl font-bold">
               Nelson
             </span>
-            <span className="hidden text-[10px] uppercase tracking-[0.25em] text-chrome md:block">
+            <span className="hidden text-[10px] uppercase tracking-[0.25em] text-obsidian/60 md:block font-medium">
               Lagos — Atelier
             </span>
           </Link>
@@ -64,13 +64,13 @@ export function Nav({ onSearch }: Props) {
               <Link
                 key={l.to}
                 to={l.to}
-                className="relative text-xs uppercase tracking-[0.15em] text-cream/80 transition hover:text-gold"
+                className="relative text-xs font-semibold uppercase tracking-[0.15em] text-obsidian/80 transition hover:text-leather"
               >
                 {l.label}
                 {location.pathname === l.to && (
                   <motion.span
                     layoutId="nav-dot"
-                    className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-gold"
+                    className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-leather"
                   />
                 )}
               </Link>
@@ -81,7 +81,7 @@ export function Nav({ onSearch }: Props) {
             <button
               onClick={onSearch}
               aria-label="Search"
-              className="text-cream/80 transition hover:text-gold"
+              className="text-obsidian/80 transition hover:text-leather"
             >
               <Search className="h-5 w-5" />
             </button>
@@ -90,29 +90,29 @@ export function Nav({ onSearch }: Props) {
             ) : (
             <button
               onClick={() => setAuthOpen(true)}
-              className="hidden text-xs uppercase tracking-[0.15em] text-cream/80 transition hover:text-gold md:block"
+              className="hidden text-xs font-semibold uppercase tracking-[0.15em] text-obsidian/80 transition hover:text-leather md:block"
             >
               Sign In
             </button>
           )}
-          <button
-            onClick={() => setCartOpen(true)}
-            aria-label="Open cart"
-            className="relative text-cream/80 transition hover:text-gold"
-          >
-            <ShoppingBag className="h-5 w-5" />
-            {count > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[9px] font-bold text-obsidian">
-                {count}
-              </span>
-            )}
-          </button>
-          <button
-            onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-              className="text-cream/80 transition hover:text-gold lg:hidden"
+            <button
+              onClick={() => setCartOpen(true)}
+              aria-label="Open cart"
+              className="relative text-obsidian/80 transition hover:text-leather"
             >
-              <Menu className="h-6 w-6" />
+              <ShoppingBag className="h-5 w-5" />
+              {count > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-leather text-[10px] text-warm-white">
+                  {count}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={() => setMobileOpen(true)}
+              aria-label="Menu"
+              className="text-obsidian/80 lg:hidden transition hover:text-leather"
+            >
+              <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>

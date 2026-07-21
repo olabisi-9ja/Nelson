@@ -1,340 +1,243 @@
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Hammer, Scissors, Ruler } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SectionReveal } from "@/components/SectionReveal";
-import { ProductCard } from "@/components/ProductCard";
-import { films, journalPosts, products, testimonials } from "@/data/mock";
-
-gsap.registerPlugin(ScrollTrigger);
+import { ArrowRight, Plus } from "lucide-react";
 
 export function Home() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const heroTextRef = useRef<HTMLDivElement>(null);
-  const heroBgRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroTextRef.current?.children ?? [],
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 1.4, stagger: 0.15, ease: "power3.out", delay: 0.3 }
-      );
-      gsap.to(heroBgRef.current, {
-        yPercent: 12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-    }, heroRef);
-    return () => ctx.revert();
-  }, []);
-
-  const featuredProducts = products.slice(0, 3);
-
   return (
-    <div>
-      {/* HERO */}
-      <section className="px-3 pb-3 pt-3 sm:px-4 sm:pb-4 sm:pt-4 md:px-6 md:pb-6 md:pt-6">
-        <div
-          ref={heroRef}
-          className="relative flex min-h-[calc(100svh-1.5rem)] sm:min-h-[calc(100svh-2rem)] md:min-h-[calc(100svh-3rem)] w-full items-center justify-center overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem]"
-        >
+    <div className="bg-warm-white text-obsidian font-sans">
+      {/* HERO SECTION - Video starts below Nav */}
+      <section className="px-4 pb-4 md:px-8 md:pb-8">
+        <div className="relative flex min-h-[75vh] w-full items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-obsidian">
           <video
-            ref={heroBgRef}
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 h-[120%] w-full object-cover opacity-60"
+            className="absolute inset-0 h-full w-full object-cover opacity-80"
           >
-            <source src="/videos/Nelson%20header%20video.mp4" type="video/mp4" />
+            <source src="/videos/Nelson header video.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/20 to-obsidian" />
-          <div
-            ref={heroTextRef}
-            className="relative z-10 mx-auto max-w-5xl px-6 text-center"
-          >
-            <motion.p className="mb-6 text-xs uppercase tracking-[0.35em] text-gold">
-              Lagos Atelier — Est. 2014
-            </motion.p>
-            <h1 className="font-display text-5xl leading-[1.05] text-warm-white md:text-7xl lg:text-8xl">
-              Crafted Without
-              <br />
-              <span className="gold-gradient">Compromise.</span>
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="relative z-10 flex h-full w-full flex-col items-center justify-center p-8 text-center text-white">
+            <h1 className="mb-4 text-sm font-bold uppercase tracking-widest md:text-base">
+              Responsibility
             </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/80 md:text-xl">
-              Handmade luxury footwear built for those who value excellence. Every pair is a
-              commission. Every detail is a decision.
+            <p className="mx-auto max-w-3xl text-3xl font-bold leading-tight md:text-5xl lg:text-6xl tracking-tight">
+              Together we will build a better future from the ground up.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                to="/commission"
-                className="group flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-obsidian transition hover:bg-gold-light"
-              >
-                Begin Commission
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/collections"
-                className="rounded-full border border-white/20 px-8 py-4 text-sm uppercase tracking-widest text-warm-white transition hover:border-gold/40 hover:text-gold"
-              >
-                Explore Collections
-              </Link>
+            <div className="absolute bottom-8 flex gap-4">
+              <span className="cursor-pointer border-b-2 border-white pb-1 text-xs font-bold uppercase tracking-widest">
+                Purpose
+              </span>
+              <span className="cursor-pointer border-b-2 border-transparent pb-1 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white">
+                Planet
+              </span>
+              <span className="cursor-pointer border-b-2 border-transparent pb-1 text-xs font-bold uppercase tracking-widest text-white/70 hover:text-white">
+                Product
+              </span>
             </div>
           </div>
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-chrome">
-            Scroll
+        </div>
+      </section>
+
+      {/* SECTION 2: CREATING A SHARED IMPACT */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <div className="mb-16 md:w-2/3">
+          <h2 className="text-5xl font-black tracking-tight md:text-7xl lg:text-8xl leading-none">
+            Creating <br /> a shared impact.
+          </h2>
+        </div>
+        
+        <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
+          <div className="overflow-hidden rounded-xl">
+            <img 
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1200" 
+              alt="Impact" 
+              className="h-full w-full object-cover"
+            />
           </div>
-        </div>
-      </section>
-
-      {/* FEATURED COLLECTION */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionReveal className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-gold">Current Season</p>
-              <h2 className="mt-3 font-display text-4xl text-warm-white md:text-5xl">
-                Featured Collection
-              </h2>
-            </div>
-            <Link
-              to="/collections"
-              className="flex items-center gap-2 text-sm uppercase tracking-widest text-cream/70 transition hover:text-gold"
-            >
-              View all <ArrowRight className="h-4 w-4" />
-            </Link>
-          </SectionReveal>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredProducts.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED FILM */}
-      <section className="relative overflow-hidden py-24 md:py-32">
-        <div className="absolute inset-0 bg-charcoal" />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <SectionReveal>
-              <p className="text-xs uppercase tracking-[0.25em] text-gold">Film</p>
-              <h2 className="mt-3 font-display text-4xl text-warm-white md:text-5xl">
-                The Last Artisan
-              </h2>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-cream/70">
-                A cinematic portrait of the hands, rituals, and obsessions behind every Nelson
-                commission. Step inside the workshop.
-              </p>
-              <Link
-                to="/film"
-                className="mt-8 inline-flex items-center gap-3 rounded-full border border-white/20 px-8 py-4 text-sm uppercase tracking-widest text-warm-white transition hover:border-gold/40 hover:text-gold"
-              >
-                <Play className="h-4 w-4 fill-current" />
-                Watch Film
-              </Link>
-            </SectionReveal>
-            <SectionReveal delay={0.2}>
-              <Link to="/film" className="group relative block aspect-video overflow-hidden rounded-sm">
-                <img
-                  src={films[0].thumbnail}
-                  alt="Film thumbnail"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-obsidian/30 transition group-hover:bg-obsidian/20">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 backdrop-blur-sm transition group-hover:scale-110">
-                    <Play className="h-6 w-6 fill-warm-white text-warm-white" />
-                  </div>
-                </div>
-              </Link>
-            </SectionReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* CRAFTSMANSHIP */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionReveal className="mb-16 text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-gold">The Process</p>
-            <h2 className="mt-3 font-display text-4xl text-warm-white md:text-6xl">
-              Craftsmanship in Every Thread
-            </h2>
-          </SectionReveal>
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              {
-                icon: Ruler,
-                title: "Precise Measurement",
-                text: "Over 20 foot measurements, a 3D scan, and a conversation about how you move.",
-              },
-              {
-                icon: Scissors,
-                title: "Hand Cut & Sewn",
-                text: "Every upper is cut from a single skin and sewn by hand using techniques unchanged for centuries.",
-              },
-              {
-                icon: Hammer,
-                title: "Built to Last",
-                text: "Welted soles, stacked heels, and hand-burnished edges that age with dignity.",
-              },
-            ].map((item, idx) => (
-              <SectionReveal key={item.title} delay={idx * 0.1}>
-                <div className="group h-full rounded-2xl border border-white/10 bg-charcoal/40 p-8 transition hover:border-gold/30 hover:bg-charcoal">
-                  <item.icon className="mb-6 h-8 w-8 text-gold" />
-                  <h3 className="font-display text-2xl text-warm-white">{item.title}</h3>
-                  <p className="mt-3 leading-relaxed text-chrome">{item.text}</p>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BEHIND THE PROCESS */}
-      <section className="relative overflow-hidden py-24 md:py-32">
-        <img
-          src="/images/craft-hands.jpg"
-          alt="Craftsmanship"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/80 to-obsidian/40" />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div className="max-w-2xl">
-            <SectionReveal>
-              <p className="text-xs uppercase tracking-[0.25em] text-gold">Behind the Process</p>
-              <h2 className="mt-3 font-display text-4xl text-warm-white md:text-5xl">
-                200 Stitches. One Story.
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-cream/80">
-                There are no shortcuts in bespoke. A Nelson shoe is cut from full-grain calf,
-                hand-lasted over a wooden form for three days, and burnished until the leather
-                glows. The result is not merely footwear — it is a record of patience.
-              </p>
-              <Link
-                to="/craftsmanship"
-                className="mt-8 inline-block text-sm uppercase tracking-widest text-gold underline-offset-8 transition hover:underline"
-              >
-                Discover the full process
-              </Link>
-            </SectionReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* PRESS */}
-      <section className="border-y border-white/10 bg-charcoal/30 py-16">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionReveal className="text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-gold">Recognition</p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-16">
-              {["Vogue", "GQ", "The Guardian", "African Luxury", "Forbes Life"].map((p) => (
-                <span key={p} className="font-display text-lg uppercase tracking-widest text-white/30 md:text-xl">
-                  {p}
-                </span>
-              ))}
-            </div>
-          </SectionReveal>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionReveal className="mb-16 text-center">
-            <p className="text-xs uppercase tracking-[0.25em] text-gold">Client Voices</p>
-            <h2 className="mt-3 font-display text-4xl text-warm-white md:text-5xl">
-              Worn by Discerning Few
-            </h2>
-          </SectionReveal>
-          <div className="grid gap-8 md:grid-cols-3">
-            {testimonials.map((t, idx) => (
-              <SectionReveal key={t.id} delay={idx * 0.1}>
-                <div className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-charcoal/30 p-8">
-                  <p className="font-display text-xl italic leading-relaxed text-cream md:text-2xl">
-                    "{t.text}"
-                  </p>
-                  <div className="mt-8">
-                    <p className="text-sm font-semibold text-warm-white">{t.name}</p>
-                    <p className="text-xs uppercase tracking-widest text-chrome">{t.role}</p>
-                  </div>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* COMMISSION CTA */}
-      <section className="py-24 md:py-32">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <SectionReveal>
-            <p className="text-xs uppercase tracking-[0.25em] text-gold">Begin Your Commission</p>
-            <h2 className="mt-3 font-display text-4xl text-warm-white md:text-6xl">
-              Your Foot. Your Last. Your Legacy.
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-cream/70">
-              Every Nelson commission begins with a conversation. Choose your style, customize every
-              detail, and watch your shoes come to life.
+          <div className="flex flex-col justify-center">
+            <h3 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl">
+              We are on a journey to become a more responsible and sustainable enterprise. We're prioritizing our people, our planet, and our product footprint.
+            </h3>
+            <p className="mb-8 text-obsidian/70 md:text-lg">
+              As a footwear company, we have an incredible opportunity to drive positive change in our industry. By building better, we can help protect the environments where our consumers live, work, and play.
             </p>
-            <Link
-              to="/commission"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-10 py-5 text-sm font-semibold uppercase tracking-widest text-obsidian transition hover:bg-gold-light"
-            >
-              Start Commission
-              <ArrowRight className="h-4 w-4" />
+            <Link to="/about" className="flex items-center gap-2 font-bold uppercase tracking-widest text-obsidian hover:underline">
+              Read Our Report <ArrowRight className="h-4 w-4" />
             </Link>
-          </SectionReveal>
+
+            <div className="mt-16 border-t border-obsidian/20 pt-8">
+              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
+                <span className="font-bold">Our ESG Strategy</span>
+                <Plus className="h-5 w-5" />
+              </div>
+              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
+                <span className="font-bold">Material Innovation</span>
+                <Plus className="h-5 w-5" />
+              </div>
+              <div className="flex items-center justify-between py-4 border-b border-obsidian/10">
+                <span className="font-bold">Supply Chain</span>
+                <Plus className="h-5 w-5" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* LATEST JOURNAL */}
-      <section className="border-t border-white/10 py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionReveal className="mb-16 flex items-end justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-gold">Journal</p>
-              <h2 className="mt-3 font-display text-4xl text-warm-white md:text-5xl">Latest Stories</h2>
-            </div>
-            <Link
-              to="/journal"
-              className="hidden items-center gap-2 text-sm uppercase tracking-widest text-cream/70 transition hover:text-gold md:flex"
-            >
-              Read all <ArrowRight className="h-4 w-4" />
-            </Link>
-          </SectionReveal>
-          <div className="grid gap-8 md:grid-cols-3">
-            {journalPosts.map((post, idx) => (
-              <SectionReveal key={post.id} delay={idx * 0.1}>
-                <Link to={`/journal/${post.slug}`} className="group block">
-                  <div className="aspect-[4/3] overflow-hidden rounded-sm bg-charcoal">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <p className="text-xs uppercase tracking-[0.2em] text-gold">{post.category}</p>
-                    <h3 className="mt-2 font-display text-xl text-warm-white group-hover:text-gold md:text-2xl">
-                      {post.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-chrome">{post.excerpt}</p>
-                  </div>
-                </Link>
-              </SectionReveal>
-            ))}
+      {/* SECTION 3: GLOBAL DAY OF PURPOSE */}
+      <section className="w-full">
+        <div className="relative h-[60vh] w-full bg-obsidian">
+          <img 
+            src="https://images.unsplash.com/photo-1551524164-687a55dd1126?auto=format&fit=crop&q=80&w=2000" 
+            alt="Day of Purpose" 
+            className="absolute inset-0 h-full w-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
+            <h2 className="text-5xl font-black text-white md:text-7xl lg:text-8xl tracking-tight">
+              Global Day of <br /> Purpose.
+            </h2>
           </div>
         </div>
+        <div className="bg-obsidian px-6 py-16 text-white md:py-24">
+          <div className="mx-auto max-w-7xl grid gap-12 md:grid-cols-2">
+            <div>
+              <p className="text-2xl font-bold md:text-3xl leading-tight">
+                Our annual global day of service brings our team together to support the communities where we live and work.
+              </p>
+            </div>
+            <div className="flex flex-col justify-end">
+              <div className="mb-8 flex gap-12 border-b border-white/20 pb-8">
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-white/60">Total Hours</p>
+                  <p className="text-4xl font-black mt-2">1,500+</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-white/60">Trees Planted</p>
+                  <p className="text-4xl font-black mt-2">10,000</p>
+                </div>
+              </div>
+              <Link to="/journal" className="flex items-center gap-2 font-bold uppercase tracking-widest hover:underline">
+                Explore the impact <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: NEWS & STORIES */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <div className="mb-12 flex items-end justify-between">
+          <h2 className="text-3xl font-black tracking-tight md:text-5xl">
+            News & Stories
+          </h2>
+          <Link to="/journal" className="hidden items-center gap-2 font-bold uppercase tracking-widest hover:underline md:flex">
+            View All <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        
+        <div className="grid gap-8 md:grid-cols-3">
+          {[
+            { title: "Building a Better Supply Chain", date: "Oct 12, 2024", img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=800" },
+            { title: "Introducing Recycled Leather", date: "Sep 28, 2024", img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=800" },
+            { title: "Community Grant Winners", date: "Sep 15, 2024", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&q=80&w=800" }
+          ].map((post, i) => (
+            <div key={i} className="group cursor-pointer">
+              <div className="mb-4 overflow-hidden rounded-lg bg-obsidian/5 aspect-[4/3]">
+                <img src={post.img} alt={post.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+              </div>
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-obsidian/50">{post.date}</p>
+              <h3 className="text-xl font-bold leading-tight group-hover:underline">{post.title}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 5: LOWER IMPACT */}
+      <section className="mx-auto max-w-7xl px-6 py-12 md:py-24 text-center">
+        <h2 className="mb-16 text-5xl font-black tracking-tight md:text-7xl lg:text-8xl leading-none">
+          A path toward <br /> lower impact.
+        </h2>
+        <div className="mb-16 w-full overflow-hidden rounded-xl">
+          <img 
+            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=2000" 
+            alt="Lower Impact" 
+            className="w-full object-cover aspect-[21/9]"
+          />
+        </div>
+        <div className="grid gap-12 text-left md:grid-cols-2 lg:gap-24">
+          <div>
+            <h3 className="mb-6 text-2xl font-bold md:text-3xl leading-tight">
+              Our products are designed to last, but our commitment doesn't stop there. We are working to reduce the environmental footprint of every pair.
+            </h3>
+            <div className="flex gap-12 border-t border-obsidian/10 pt-8 mt-8">
+              <div>
+                <p className="text-4xl font-black">40%</p>
+                <p className="text-xs uppercase tracking-widest font-bold mt-2 text-obsidian/60">Recycled Materials</p>
+              </div>
+              <div>
+                <p className="text-4xl font-black">100%</p>
+                <p className="text-xs uppercase tracking-widest font-bold mt-2 text-obsidian/60">Carbon Neutral Ops</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="border-t border-obsidian/20">
+              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
+                <span className="text-xl font-bold">Climate Action</span>
+                <Plus className="h-6 w-6" />
+              </div>
+              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
+                <span className="text-xl font-bold">Water Stewardship</span>
+                <Plus className="h-6 w-6" />
+              </div>
+              <div className="flex items-center justify-between py-6 border-b border-obsidian/10 cursor-pointer">
+                <span className="text-xl font-bold">Waste Reduction</span>
+                <Plus className="h-6 w-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: RESPONSIBILITY STARTS AT THE SOURCE */}
+      <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+        <h2 className="mb-16 text-center text-5xl font-black tracking-tight md:text-7xl lg:text-8xl leading-none">
+          Responsibility <br /> starts at the <br /> source.
+        </h2>
+        <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
+          <div className="overflow-hidden rounded-xl">
+            <img 
+              src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&q=80&w=1200" 
+              alt="Source" 
+              className="h-full w-full object-cover aspect-[4/5]"
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <h3 className="mb-6 text-2xl font-bold md:text-3xl leading-tight">
+              We partner with suppliers who share our commitment to ethical manufacturing and environmental stewardship.
+            </h3>
+            <p className="mb-8 text-obsidian/70 md:text-lg">
+              Every tannery we work with must adhere to strict environmental standards, ensuring water is treated properly and chemicals are managed safely. We believe transparency is the first step toward accountability.
+            </p>
+            <Link to="/about" className="flex items-center gap-2 font-bold uppercase tracking-widest text-obsidian hover:underline">
+              View Our Suppliers <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER CALL TO ACTION */}
+      <section className="bg-obsidian text-warm-white py-32 px-6 text-center">
+        <h2 className="mb-12 text-6xl font-black tracking-tight md:text-8xl lg:text-9xl leading-[0.9]">
+          Build <br /> Better <br /> With Us
+        </h2>
+        <Link 
+          to="/contact" 
+          className="inline-block bg-white text-obsidian px-10 py-4 font-bold uppercase tracking-widest transition hover:bg-white/90"
+        >
+          Join Our Team
+        </Link>
       </section>
     </div>
   );

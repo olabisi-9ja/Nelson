@@ -22,7 +22,7 @@ export function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-obsidian text-warm-white">
+    <div className="min-h-screen">
       <Nav onSearch={() => setSearchOpen(true)} />
       <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
       <AuthModal />
