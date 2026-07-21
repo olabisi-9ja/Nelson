@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const heroTextRef = useRef<HTMLDivElement>(null);
-  const heroImageRef = useRef<HTMLImageElement>(null);
+  const heroBgRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -22,7 +22,7 @@ export function Home() {
         { opacity: 0, y: 60 },
         { opacity: 1, y: 0, duration: 1.4, stagger: 0.15, ease: "power3.out", delay: 0.3 }
       );
-      gsap.to(heroImageRef.current, {
+      gsap.to(heroBgRef.current, {
         yPercent: 12,
         ease: "none",
         scrollTrigger: {
@@ -41,51 +41,57 @@ export function Home() {
   return (
     <div>
       {/* HERO */}
-      <section
-        ref={heroRef}
-        className="relative flex min-h-screen items-center justify-center overflow-hidden"
-      >
-        <img
-          ref={heroImageRef}
-          src="/images/hero-workshop.jpg"
-          alt="Nelson workshop"
-          className="absolute inset-0 h-[120%] w-full object-cover opacity-60"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/20 to-obsidian" />
+      <section className="px-3 pb-3 pt-3 sm:px-4 sm:pb-4 sm:pt-4 md:px-6 md:pb-6 md:pt-6">
         <div
-          ref={heroTextRef}
-          className="relative z-10 mx-auto max-w-5xl px-6 text-center"
+          ref={heroRef}
+          className="relative flex min-h-[calc(100vh-1.5rem)] sm:min-h-[calc(100vh-2rem)] md:min-h-[calc(100vh-3rem)] w-full items-center justify-center overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem]"
         >
-          <motion.p className="mb-6 text-xs uppercase tracking-[0.35em] text-gold">
-            Lagos Atelier — Est. 2014
-          </motion.p>
-          <h1 className="font-display text-5xl leading-[1.05] text-warm-white md:text-7xl lg:text-8xl">
-            Crafted Without
-            <br />
-            <span className="gold-gradient">Compromise.</span>
-          </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/80 md:text-xl">
-            Handmade luxury footwear built for those who value excellence. Every pair is a
-            commission. Every detail is a decision.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              to="/commission"
-              className="group flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-obsidian transition hover:bg-gold-light"
-            >
-              Begin Commission
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/collections"
-              className="rounded-full border border-white/20 px-8 py-4 text-sm uppercase tracking-widest text-warm-white transition hover:border-gold/40 hover:text-gold"
-            >
-              Explore Collections
-            </Link>
+          <video
+            ref={heroBgRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-[120%] w-full object-cover opacity-60"
+          >
+            <source src="/videos/Nelson%20header%20video.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian/20 to-obsidian" />
+          <div
+            ref={heroTextRef}
+            className="relative z-10 mx-auto max-w-5xl px-6 text-center"
+          >
+            <motion.p className="mb-6 text-xs uppercase tracking-[0.35em] text-gold">
+              Lagos Atelier — Est. 2014
+            </motion.p>
+            <h1 className="font-display text-5xl leading-[1.05] text-warm-white md:text-7xl lg:text-8xl">
+              Crafted Without
+              <br />
+              <span className="gold-gradient">Compromise.</span>
+            </h1>
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/80 md:text-xl">
+              Handmade luxury footwear built for those who value excellence. Every pair is a
+              commission. Every detail is a decision.
+            </p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                to="/commission"
+                className="group flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-widest text-obsidian transition hover:bg-gold-light"
+              >
+                Begin Commission
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/collections"
+                className="rounded-full border border-white/20 px-8 py-4 text-sm uppercase tracking-widest text-warm-white transition hover:border-gold/40 hover:text-gold"
+              >
+                Explore Collections
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-chrome">
-          Scroll
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.3em] text-chrome">
+            Scroll
+          </div>
         </div>
       </section>
 
