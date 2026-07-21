@@ -140,7 +140,7 @@ export function Home() {
             </Link>
           ))}
         </div>
-      </section>n>
+      </section>
 
       {/* SECTION 2: THE ART OF SHOEMAKING */}
       <section className="mx-auto max-w-7xl px-6 py-12 md:py-24">
