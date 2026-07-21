@@ -28,7 +28,7 @@ export function Journal() {
         <SectionReveal>
           <p className="text-xs uppercase tracking-[0.25em] text-gold">Journal</p>
           <h1 className="mt-4 font-display text-5xl text-warm-white md:text-7xl">
-            Stories from the Atelier
+            Stories from the Studio
           </h1>
         </SectionReveal>
       </section>

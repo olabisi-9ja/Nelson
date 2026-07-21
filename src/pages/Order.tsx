@@ -18,7 +18,7 @@ const steps = [
   "Confirm",
 ];
 
-export function Commission() {
+export function Order() {
   const location = useLocation();
   const navigate = useNavigate();
   const passedProduct = (location.state as { product?: typeof products[0]; config?: Record<string, string> } | null)?.product;
@@ -53,9 +53,9 @@ export function Commission() {
     <div className="pt-32">
       <section className="mx-auto max-w-5xl px-6 pb-12">
         <SectionReveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">Commission Experience</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-gold">Custom Order Experience</p>
           <h1 className="mt-4 font-display text-4xl text-warm-white md:text-6xl">
-            Begin Your Commission
+            Order Now
           </h1>
         </SectionReveal>
       </section>

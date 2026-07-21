@@ -45,7 +45,7 @@ export function Craftsmanship() {
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-chrome">
             We do not mass produce. We measure, cut, stitch, last, welt, and finish every pair by
-            hand in our Lagos atelier.
+            hand in our Lagos studio.
           </p>
         </SectionReveal>
       </section>

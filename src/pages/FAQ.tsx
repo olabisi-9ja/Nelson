@@ -5,8 +5,8 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    q: "How long does a bespoke commission take?",
-    a: "Standard commissions take 4 to 6 weeks from measurement to delivery. Priority and rush timelines are available for private clients.",
+    q: "How long does a custom order take?",
+    a: "Standard custom orders take 4 to 6 weeks from measurement to delivery. Priority and rush timelines are available for private clients.",
   },
   {
     q: "Do you offer returns or exchanges?",
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "How do I know my size?",
-    a: "You can visit our Lagos atelier for a 3D foot scan, use our AI size assistant, or follow our remote measurement guide.",
+    a: "You can visit our Lagos studio for a 3D foot scan, use our AI size assistant, or follow our remote measurement guide.",
   },
   {
     q: "What materials do you use?",

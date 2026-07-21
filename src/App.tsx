@@ -8,7 +8,7 @@ import { Home } from "@/pages/Home";
 import { Collections } from "@/pages/Collections";
 import { CollectionDetail } from "@/pages/CollectionDetail";
 import { Product } from "@/pages/Product";
-import { Commission } from "@/pages/Commission";
+import { Order } from "@/pages/Order";
 import { Craftsmanship } from "@/pages/Craftsmanship";
 import { Archive } from "@/pages/Archive";
 import { Journal } from "@/pages/Journal";
@@ -35,7 +35,7 @@ export default function App() {
               <Route path="collections" element={<Collections />} />
               <Route path="collections/:slug" element={<CollectionDetail />} />
               <Route path="product/:id" element={<Product />} />
-              <Route path="commission" element={<Commission />} />
+              <Route path="order" element={<Order />} />
               <Route path="craftsmanship" element={<Craftsmanship />} />
               <Route path="archive" element={<Archive />} />
               <Route path="journal" element={<Journal />} />

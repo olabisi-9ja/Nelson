@@ -8,7 +8,7 @@ export function Archive() {
         <SectionReveal>
           <p className="text-xs uppercase tracking-[0.25em] text-gold">Archive</p>
           <h1 className="mt-4 font-display text-5xl text-warm-white md:text-7xl">
-            Past Commissions
+            Past Custom Orders
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-chrome">
             A curated record of bespoke work. Each pair was made for a single client and will never be
@@ -34,7 +34,7 @@ export function Archive() {
                   <h3 className="mt-2 font-display text-xl text-warm-white">{p.name}</h3>
                   <p className="mt-2 text-sm text-chrome line-clamp-2">{p.description}</p>
                   <div className="mt-4 flex items-center justify-between text-xs text-chrome">
-                    <span>Commission only</span>
+                    <span>Custom order only</span>
                     <span>Lagos, 2026</span>
                   </div>
                 </div>

@@ -9,7 +9,7 @@ export function Contact() {
     <div className="pt-32">
       <section className="mx-auto max-w-7xl px-6 pb-16">
         <SectionReveal>
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">Atelier Access</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-gold">Studio Access</p>
           <h1 className="mt-4 font-display text-5xl text-warm-white md:text-7xl">
             Contact
           </h1>
@@ -26,7 +26,7 @@ export function Contact() {
             <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-charcoal/40 p-6">
               <MapPin className="h-6 w-6 text-gold" />
               <div>
-                <h3 className="font-display text-lg text-warm-white">Visit the Atelier</h3>
+                <h3 className="font-display text-lg text-warm-white">Visit the Studio</h3>
                 <p className="mt-1 text-chrome">14 Adeola Odeku, Victoria Island, Lagos</p>
               </div>
             </div>
@@ -34,7 +34,7 @@ export function Contact() {
               <Mail className="h-6 w-6 text-gold" />
               <div>
                 <h3 className="font-display text-lg text-warm-white">Email</h3>
-                <p className="mt-1 text-chrome">atelier@nelson.shoes</p>
+                <p className="mt-1 text-chrome">studio@nelson.shoes</p>
               </div>
             </div>
             <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-charcoal/40 p-6">

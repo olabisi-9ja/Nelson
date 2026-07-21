@@ -54,9 +54,6 @@ export function Nav({ onSearch }: Props) {
             <span className="font-display text-2xl tracking-tight text-obsidian transition group-hover:text-leather md:text-3xl font-bold">
               Nelson
             </span>
-            <span className="hidden text-[10px] uppercase tracking-[0.25em] text-obsidian/60 md:block font-medium">
-              Lagos — Atelier
-            </span>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex">

@@ -456,11 +456,11 @@ export function Product() {
                   Add to Bag — {formatNaira(product.price)}
                 </button>
                 <Link
-                  to="/commission"
+                  to="/order"
                   state={{ product, config }}
                   className="flex flex-1 items-center justify-center gap-2 rounded-full border border-white/10 py-4 text-sm uppercase tracking-widest text-warm-white transition hover:border-gold/40 hover:text-gold"
                 >
-                  Commission
+                  Order Now
                 </Link>
               </div>
               <div className="flex gap-3">

@@ -46,9 +46,9 @@ export function JournalPost() {
               fashion. It is slow luxury.
             </p>
             <p>
-              Our artisans train for years before they are permitted to work on a client commission.
+              Our artisans train for years before they are permitted to work on a custom order.
               Mistakes are corrected, standards are enforced, and the final product must pass the eye
-              of the founder before it leaves the atelier.
+              of the founder before it leaves the studio.
             </p>
           </div>
           <div className="mt-12 flex flex-wrap gap-2">
