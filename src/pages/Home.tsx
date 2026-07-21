@@ -128,7 +128,7 @@ export function Home() {
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 onTimeUpdate={(e) => {
                   if (e.currentTarget.currentTime > 0.15) {
                     setVideoLoaded(true);
