@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { Search, User, ShoppingBag, LogOut, LayoutDashboard } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
-import { cn } from "@/utils/cn";
 import StaggeredMenu from "./StaggeredMenu";
 
 interface Props {
@@ -12,12 +11,12 @@ interface Props {
 }
 
 const navLinks = [
-  { label: "Collections", link: "/collections" },
-  { label: "Journal", link: "/journal" },
-  { label: "Masterclass", link: "/masterclass" },
-  { label: "Private Clients", link: "/private-clients" },
-  { label: "About", link: "/about" },
-  { label: "Contact", link: "/contact" },
+  { label: "Collections", link: "/collections", ariaLabel: "Browse collections" },
+  { label: "Journal", link: "/journal", ariaLabel: "Read our journal" },
+  { label: "Masterclass", link: "/masterclass", ariaLabel: "Explore masterclasses" },
+  { label: "Private Clients", link: "/private-clients", ariaLabel: "Private client services" },
+  { label: "About", link: "/about", ariaLabel: "About Nelson" },
+  { label: "Contact", link: "/contact", ariaLabel: "Contact us" },
 ];
 
 const socialItems = [
@@ -26,103 +25,58 @@ const socialItems = [
 ];
 
 export function Nav({ onSearch }: Props) {
-  const location = useLocation();
   const { user, setAuthOpen, logout } = useAuth();
   const { count, setOpen: setCartOpen } = useCart();
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const headerActions = (
+    <div className="flex items-center gap-4">
+      <button
+        onClick={onSearch}
+        aria-label="Search"
+        className="text-obsidian/80 transition hover:text-leather"
+      >
+        <Search className="h-5 w-5" strokeWidth={1.5} />
+      </button>
+      {user ? (
+        <UserMenu user={user} logout={logout} />
+      ) : (
+        <button
+          onClick={() => setAuthOpen(true)}
+          className="hidden text-[10px] font-medium uppercase tracking-widest text-obsidian bg-transparent px-4 py-1.5 rounded-full hover:bg-obsidian hover:text-warm-white transition duration-300 md:block border border-obsidian"
+        >
+          Sign In
+        </button>
+      )}
+      <button
+        onClick={() => setCartOpen(true)}
+        aria-label="Open cart"
+        className="relative text-obsidian/80 transition hover:text-leather"
+      >
+        <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
+        {count > 0 && (
+          <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-leather text-[10px] text-warm-white font-medium">
+            {count}
+          </span>
+        )}
+      </button>
+    </div>
+  );
 
   return (
-    <>
-      <header
-        className={cn(
-          "sticky top-0 z-40 transition-all duration-500",
-          scrolled
-            ? "border-b border-black/10 bg-warm-white/95 py-4 backdrop-blur-md shadow-sm"
-            : "bg-warm-white py-6"
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-          <Link to="/" className="group flex items-center gap-3">
-            <span className="font-display text-3xl md:text-4xl font-medium tracking-normal text-obsidian transition group-hover:text-leather">
-              Nelson
-            </span>
-          </Link>
-
-          <nav className="hidden items-center gap-8 lg:flex">
-            {navLinks.slice(0, 4).map((l) => (
-              <Link
-                key={l.link}
-                to={l.link}
-                className="relative text-[11px] font-medium uppercase tracking-[0.2em] text-obsidian/70 transition hover:text-obsidian"
-              >
-                {l.label}
-                {location.pathname === l.link && (
-                  <motion.span
-                    layoutId="nav-dot"
-                    className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-leather"
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-5">
-            <button
-              onClick={onSearch}
-              aria-label="Search"
-              className="text-obsidian/80 transition hover:text-leather"
-            >
-              <Search className="h-5 w-5" strokeWidth={1.5} />
-            </button>
-            {user ? (
-              <UserMenu user={user} logout={logout} />
-            ) : (
-              <button
-                onClick={() => setAuthOpen(true)}
-                className="hidden text-[10px] font-medium uppercase tracking-widest text-obsidian bg-transparent px-5 py-2 rounded-full hover:bg-obsidian hover:text-warm-white transition duration-300 md:block border border-obsidian"
-              >
-                Sign In
-              </button>
-            )}
-            <button
-              onClick={() => setCartOpen(true)}
-              aria-label="Open cart"
-              className="relative text-obsidian/80 transition hover:text-leather"
-            >
-              <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
-              {count > 0 && (
-                <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-leather text-[10px] text-warm-white">
-                  {count}
-                </span>
-              )}
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* StaggeredMenu integration */}
-      <div className="fixed top-0 left-0 w-full z-50 pointer-events-none">
-        <StaggeredMenu
-          position="right"
-          items={navLinks}
-          socialItems={socialItems}
-          displaySocials={true}
-          displayItemNumbering={true}
-          menuButtonColor="#0a0a0a"
-          openMenuButtonColor="#0a0a0a"
-          accentColor="#c5a059"
-          colors={["#c5a059", "#1a1a1a", "#0a0a0a"]}
-          closeOnClickAway={true}
-        />
-      </div>
-    </>
+    <StaggeredMenu
+      position="right"
+      isFixed={true}
+      items={navLinks}
+      socialItems={socialItems}
+      displaySocials={true}
+      displayItemNumbering={true}
+      menuButtonColor="#0a0a0a"
+      openMenuButtonColor="#0a0a0a"
+      accentColor="#c5a059"
+      colors={["#c5a059", "#1a1a1a"]}
+      closeOnClickAway={true}
+      headerActions={headerActions}
+    />
   );
 }
 
@@ -162,17 +116,17 @@ function UserMenu({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
-            className="absolute right-0 top-12 w-56 rounded-xl border border-white/10 bg-ink p-2 shadow-2xl z-50"
+            className="absolute right-0 top-12 w-56 rounded-xl border border-white/10 bg-obsidian p-2 shadow-2xl z-50 text-warm-white"
           >
             <div className="px-3 py-2">
               <p className="text-sm font-medium text-warm-white">{user.name}</p>
-              <p className="text-[10px] uppercase tracking-widest text-chrome">{user.role}</p>
+              <p className="text-[10px] uppercase tracking-widest text-gold">{user.role}</p>
             </div>
             <div className="my-1 h-px bg-white/10" />
             <Link
               to={dashboardLink}
               onClick={() => setOpen(false)}
-              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-cream/80 transition hover:bg-white/5 hover:text-gold"
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-warm-white/80 transition hover:bg-white/5 hover:text-gold"
             >
               <LayoutDashboard className="h-4 w-4" /> Dashboard
             </Link>
@@ -181,7 +135,7 @@ function UserMenu({
                 logout();
                 setOpen(false);
               }}
-              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-cream/80 transition hover:bg-white/5 hover:text-red-400"
+              className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-warm-white/80 transition hover:bg-white/5 hover:text-red-400"
             >
               <LogOut className="h-4 w-4" /> Sign Out
             </button>
