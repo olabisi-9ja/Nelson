@@ -52,7 +52,7 @@ export function Craftsmanship() {
 
       <section className="relative h-[50vh] min-h-[360px]">
         <img
-          src="/images/craft-hands.jpg"
+          src="/images/craft-hands.webp"
           alt="Craftsmanship"
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />

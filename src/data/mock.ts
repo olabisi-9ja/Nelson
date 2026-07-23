@@ -22,8 +22,8 @@ export const collections: Collection[] = [
       "Born in the 19th-century halls of Oxford University, the Oxford became the definitive formal shoe. Nelson reinterprets it with Nigerian precision.",
     craftStory:
       "Each Oxford requires over 200 hand-sewn stitches, a single piece of full-grain calf, and three days of burnishing.",
-    image: "/images/oxford-shoe.jpg",
-    banner: "/images/oxford-shoe.jpg",
+    image: "/images/oxford-shoe.webp",
+    banner: "/images/oxford-shoe.webp",
     products: ["p1", "p5"],
   },
   {
@@ -37,8 +37,8 @@ export const collections: Collection[] = [
       "A Victorian riding boot reborn for the modern maverick. Elasticated panels, clean lines, no compromise.",
     craftStory:
       "We cut the elastic by hand and fit it into a hand-burnished counter for flexibility that lasts decades.",
-    image: "/images/chelsea-boot.jpg",
-    banner: "/images/chelsea-boot.jpg",
+    image: "/images/chelsea-boot.webp",
+    banner: "/images/chelsea-boot.webp",
     products: ["p2"],
   },
   {
@@ -52,8 +52,8 @@ export const collections: Collection[] = [
       "From Norwegian farmers to Hollywood royalty, the loafer is a global icon of leisure.",
     craftStory:
       "Our loafer lasts are sculpted for barefoot comfort, lined with supple kid leather.",
-    image: "/images/loafer.jpg",
-    banner: "/images/loafer.jpg",
+    image: "/images/loafer.webp",
+    banner: "/images/loafer.webp",
     products: ["p3"],
   },
   {
@@ -66,8 +66,8 @@ export const collections: Collection[] = [
     history: "Boots have carried kings, soldiers, and pioneers. Ours carry the future.",
     craftStory:
       "Hand-lasted uppers, stacked leather heels, and storm welts for weatherproof elegance.",
-    image: "/images/chelsea-boot.jpg",
-    banner: "/images/chelsea-boot.jpg",
+    image: "/images/chelsea-boot.webp",
+    banner: "/images/chelsea-boot.webp",
     products: ["p4"],
   },
   {
@@ -80,8 +80,8 @@ export const collections: Collection[] = [
     history: "The pinnacle of men's dress footwear, reimagined with Nigerian soul.",
     craftStory:
       "Wholecut formal shoes are crafted from a single flawless skin, zero visible seams.",
-    image: "/images/product-hero.jpg",
-    banner: "/images/product-hero.jpg",
+    image: "/images/product-hero.webp",
+    banner: "/images/product-hero.webp",
     products: ["p5"],
   },
   {
@@ -94,8 +94,8 @@ export const collections: Collection[] = [
     history: "Each release tells a singular story and will never be reproduced.",
     craftStory:
       "We prototype for months, source rare skins ethically, and number every pair.",
-    image: "/images/hero-workshop.jpg",
-    banner: "/images/hero-workshop.jpg",
+    image: "/images/hero-workshop.webp",
+    banner: "/images/hero-workshop.webp",
     products: ["p6"],
   },
 ];
@@ -107,8 +107,8 @@ export const products: Product[] = [
     name: "The Regent Oxford",
     collection: "Oxford",
     price: 125000,
-    image: "/images/oxford-shoe.jpg",
-    images: ["/images/oxford-shoe.jpg", "/images/product-hero.jpg"],
+    image: "/images/oxford-shoe.webp",
+    images: ["/images/oxford-shoe.webp", "/images/product-hero.webp"],
     description:
       "A wholecut Oxford cut from a single piece of black box calf. Sleek, uncompromising, eternal.",
     craftStory:
@@ -143,8 +143,8 @@ export const products: Product[] = [
     name: "The Duke Chelsea",
     collection: "Chelsea",
     price: 135000,
-    image: "/images/chelsea-boot.jpg",
-    images: ["/images/chelsea-boot.jpg", "/images/chelsea-boot.jpg"],
+    image: "/images/chelsea-boot.webp",
+    images: ["/images/chelsea-boot.webp", "/images/chelsea-boot.webp"],
     description:
       "A sleek Chelsea boot with a tapered toe and elastic panels in deep espresso calf.",
     craftStory:
@@ -173,8 +173,8 @@ export const products: Product[] = [
     name: "The Patrician Loafer",
     collection: "Loafers",
     price: 115000,
-    image: "/images/loafer.jpg",
-    images: ["/images/loafer.jpg", "/images/loafer.jpg"],
+    image: "/images/loafer.webp",
+    images: ["/images/loafer.webp", "/images/loafer.webp"],
     description:
       "A burgundy loafer with hand-stitched apron and gold bit detail.",
     craftStory:
@@ -201,8 +201,8 @@ export const products: Product[] = [
     name: "The Sentinel Boot",
     collection: "Boots",
     price: 155000,
-    image: "/images/chelsea-boot.jpg",
-    images: ["/images/chelsea-boot.jpg"],
+    image: "/images/chelsea-boot.webp",
+    images: ["/images/chelsea-boot.webp"],
     description: "A commando-soled lace-up boot for men who walk with purpose.",
     craftStory:
       "Storm-welted for the elements, hand-burnished for the boardroom.",
@@ -228,8 +228,8 @@ export const products: Product[] = [
     name: "The Sovereign Formal",
     collection: "Formal",
     price: 165000,
-    image: "/images/product-hero.jpg",
-    images: ["/images/product-hero.jpg", "/images/oxford-shoe.jpg"],
+    image: "/images/product-hero.webp",
+    images: ["/images/product-hero.webp", "/images/oxford-shoe.webp"],
     description: "Patent leather opera pump for the most solemn occasions.",
     craftStory:
       "Cut from one piece of mirror-black patent calf, hand-lasted and polished to a piano finish.",
@@ -255,8 +255,8 @@ export const products: Product[] = [
     name: "Edition I — Akwaaba",
     collection: "Limited Editions",
     price: 250000,
-    image: "/images/hero-workshop.jpg",
-    images: ["/images/hero-workshop.jpg"],
+    image: "/images/hero-workshop.webp",
+    images: ["/images/hero-workshop.webp"],
     description:
       "A numbered limited release featuring hand-tooled Adinkra motifs on supple kudu leather.",
     craftStory:
@@ -307,7 +307,7 @@ export const journalPosts: JournalPost[] = [
     title: "The Anatomy of Patina",
     excerpt: "Why hand-burnished leather ages more beautifully than anything machine-made.",
     category: "Craftsmanship",
-    image: "/images/craft-hands.jpg",
+    image: "/images/craft-hands.webp",
     date: "2026-02-10",
     tags: ["patina", "leather", "craft"],
     content:
@@ -319,7 +319,7 @@ export const journalPosts: JournalPost[] = [
     title: "Lasts & Lines",
     excerpt: "How a wooden last determines the silhouette, comfort, and character of every pair.",
     category: "Craftsmanship",
-    image: "/images/about-workshop.jpg",
+    image: "/images/about-workshop.webp",
     date: "2026-01-28",
     tags: ["lasts", "design", "fit"],
     content:
@@ -331,7 +331,7 @@ export const journalPosts: JournalPost[] = [
     title: "The Care Ritual",
     excerpt: "A few minutes a week will keep your bespoke shoes alive for decades.",
     category: "Care",
-    image: "/images/oxford-shoe.jpg",
+    image: "/images/oxford-shoe.webp",
     date: "2026-01-15",
     tags: ["care", "longevity", "polish"],
     content:
@@ -344,7 +344,7 @@ export const films: Film[] = [
     id: "f1",
     title: "The Last Artisan",
     category: "Documentary",
-    thumbnail: "/images/film-thumbnail.jpg",
+    thumbnail: "/images/film-thumbnail.webp",
     duration: "12:34",
     description: "A cinematic portrait of Nelson's founder and his lifelong obsession with footwear.",
   },
@@ -352,7 +352,7 @@ export const films: Film[] = [
     id: "f2",
     title: "From Last to Legacy",
     category: "Workshop",
-    thumbnail: "/images/craft-hands.jpg",
+    thumbnail: "/images/craft-hands.webp",
     duration: "08:12",
     description: "Step inside the atelier and witness a pair being born from raw leather.",
   },
@@ -360,7 +360,7 @@ export const films: Film[] = [
     id: "f3",
     title: "A Client's Story",
     category: "Clients",
-    thumbnail: "/images/oxford-shoe.jpg",
+    thumbnail: "/images/oxford-shoe.webp",
     duration: "05:45",
     description: "A private client shares the experience of commissioning his first pair.",
   },
@@ -368,7 +368,7 @@ export const films: Film[] = [
     id: "f4",
     title: "Autumn Campaign",
     category: "Campaigns",
-    thumbnail: "/images/chelsea-boot.jpg",
+    thumbnail: "/images/chelsea-boot.webp",
     duration: "02:30",
     description: "The mood, the light, the movement — our latest campaign in motion.",
   },
@@ -379,7 +379,7 @@ export const courses: Course[] = [
     id: "course1",
     title: "The Art of Shoemaking",
     instructor: "Nelson & Master Artisans",
-    thumbnail: "/images/craft-hands.jpg",
+    thumbnail: "/images/craft-hands.webp",
     duration: "6h 20m",
     lessons: 24,
     price: 75000,
@@ -389,7 +389,7 @@ export const courses: Course[] = [
     id: "course2",
     title: "Leather Selection Mastery",
     instructor: "Adeyemi Ogunlesi",
-    thumbnail: "/images/about-workshop.jpg",
+    thumbnail: "/images/about-workshop.webp",
     duration: "3h 45m",
     lessons: 14,
     price: 45000,
@@ -399,7 +399,7 @@ export const courses: Course[] = [
     id: "course3",
     title: "Patina & Finishing",
     instructor: "Nelson",
-    thumbnail: "/images/oxford-shoe.jpg",
+    thumbnail: "/images/oxford-shoe.webp",
     duration: "4h 10m",
     lessons: 18,
     price: 55000,

@@ -6,7 +6,7 @@ const imgDir = path.resolve('public/images');
 const files = fs.readdirSync(imgDir);
 
 async function optimize() {
-  console.log('Optimizing images in public/images...');
+  console.log('Optimizing and converting images to WebP in public/images...');
   for (const file of files) {
     const filePath = path.join(imgDir, file);
     const stat = fs.statSync(filePath);
@@ -16,22 +16,22 @@ async function optimize() {
     if (!['.jpg', '.jpeg', '.png'].includes(ext)) continue;
 
     console.log(`Processing ${file} (${(stat.size / 1024).toFixed(1)} KB)...`);
-    const tempPath = filePath + '.tmp';
+    
+    // WebP output path
+    const parsed = path.parse(filePath);
+    const webpPath = path.join(imgDir, `${parsed.name}.webp`);
 
     let pipeline = sharp(filePath).resize({ width: 1200, withoutEnlargement: true });
+    
+    // Convert to webp with high quality
+    pipeline = pipeline.webp({ quality: 80, effort: 6 });
 
-    if (ext === '.png') {
-      pipeline = pipeline.png({ quality: 80, compressionLevel: 8 });
-    } else {
-      pipeline = pipeline.jpeg({ quality: 80, progressive: true });
-    }
+    await pipeline.toFile(webpPath);
+    const newStat = fs.statSync(webpPath);
+    console.log(` -> Converted to ${parsed.name}.webp: ${(newStat.size / 1024).toFixed(1)} KB (Saved ${(((stat.size - newStat.size) / stat.size) * 100).toFixed(1)}%)`);
 
-    await pipeline.toFile(tempPath);
-    const newStat = fs.statSync(tempPath);
-    console.log(` -> Optimized ${file}: ${(newStat.size / 1024).toFixed(1)} KB (Saved ${(((stat.size - newStat.size) / stat.size) * 100).toFixed(1)}%)`);
-
+    // Remove old file
     fs.unlinkSync(filePath);
-    fs.renameSync(tempPath, filePath);
   }
   console.log('All images optimized successfully!');
 }

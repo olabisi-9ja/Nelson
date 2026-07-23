@@ -26,7 +26,7 @@ export function About() {
 
       <section className="relative h-[60vh] min-h-[420px]">
         <img
-          src="/images/about-workshop.jpg"
+          src="/images/about-workshop.webp"
           alt="Workshop"
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />

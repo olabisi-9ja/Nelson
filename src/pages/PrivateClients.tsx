@@ -28,7 +28,7 @@ export function PrivateClients() {
 
       <section className="relative h-[50vh] min-h-[360px]">
         <img
-          src="/images/about-workshop.jpg"
+          src="/images/about-workshop.webp"
           alt="Private salon"
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />

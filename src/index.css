@@ -13,6 +13,8 @@
   --color-chrome: #a8b0bc;
   --color-leather: #6b4423;
   --color-leather-light: #8a5a36;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-playfair: 'Playfair Display', serif;
 }
 
 html {
@@ -27,8 +29,8 @@ body {
 }
 
 h1, h2, h3, h4, .font-display {
-  font-family: 'Inter', sans-serif;
-  letter-spacing: -0.04em;
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
 }
 
 ::selection {

@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Plus, Minus, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Plus, Minus } from "lucide-react";
+import BounceCards from "../components/BounceCards";
 
 export function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -46,8 +47,8 @@ export function Home() {
     }
   ];
 
-  const leftImages = ["/images/oxford-shoe.jpg", "/images/loafer.jpg"];
-  const rightImages = ["/images/chelsea-boot.jpg", "/images/product-hero.jpg"];
+  const leftImages = ["/images/oxford-shoe.webp", "/images/loafer.webp"];
+  const rightImages = ["/images/chelsea-boot.webp", "/images/product-hero.webp"];
 
   const faqItems = [
     {
@@ -198,7 +199,47 @@ export function Home() {
           </div>
 
         </div>
-      </section>      {/* SECTION 1.5: FEATURED COLLECTIONS (SHOES) */}
+      </section>
+
+      {/* SECTION: BOUNCE CARDS SHOWCASE */}
+      <section className="bg-obsidian text-warm-white py-20 px-6 border-y border-white/10 overflow-hidden">
+        <div className="mx-auto max-w-7xl flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div className="max-w-xl text-center lg:text-left">
+            <span className="text-xs font-bold uppercase tracking-widest text-gold">Interactive Showcase</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-display font-black tracking-tight leading-tight">
+              Bespoke Craft, Interactive Touch
+            </h2>
+            <p className="mt-4 text-warm-white/70 text-base md:text-lg leading-relaxed">
+              Explore our signature silhouettes. Hover over each piece to reveal the anatomical precision and handmade welt construction of Nelson footwear.
+            </p>
+            <div className="mt-8">
+              <Link to="/collections" className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-xs font-bold uppercase tracking-widest text-obsidian hover:bg-gold-light transition duration-300">
+                Explore All Models <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+          <div className="flex justify-center items-center w-full lg:w-auto py-8">
+            <BounceCards
+              className="custom-bounceCards"
+              images={[
+                "/images/oxford-shoe.webp",
+                "/images/chelsea-boot.webp",
+                "/images/loafer.webp",
+                "/images/product-hero.webp",
+                "/images/craft-hands.webp"
+              ]}
+              containerWidth={500}
+              containerHeight={320}
+              animationDelay={0.3}
+              animationStagger={0.08}
+              easeType="elastic.out(1, 0.5)"
+              enableHover
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 1.5: FEATURED COLLECTIONS (SHOES) */}
       <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
         <div className="mb-12 flex items-end justify-between border-b border-obsidian/10 pb-8">
           <h2 className="text-3xl font-black tracking-tight md:text-5xl">
@@ -211,14 +252,14 @@ export function Home() {
         
         <div className="grid gap-6 grid-cols-2 lg:grid-cols-4">
           {[
-            { title: "The Regent Oxford", desc: "Closed-Lacing Elegance", img: "/images/oxford-shoe.jpg", link: "/product/regent-oxford" },
-            { title: "The Duke Chelsea", desc: "Effortless Sophistication", img: "/images/chelsea-boot.jpg", link: "/product/duke-chelsea" },
-            { title: "The Patrician Loafer", desc: "Relaxed Refinement", img: "/images/loafer.jpg", link: "/product/patrician-loafer" },
-            { title: "The Sovereign Formal", desc: "Black Tie, Elevated", img: "/images/product-hero.jpg", link: "/product/sovereign-formal" },
-            { title: "The Sentinel Boot", desc: "Built for Legacy", img: "/images/about-workshop.jpg", link: "/product/sentinel-boot" },
-            { title: "Edition I — Akwaaba", desc: "Rare by Design", img: "/images/hero-workshop.jpg", link: "/product/edition-i" },
-            { title: "The Artisan Derby", desc: "Everyday Distinction", img: "/images/craft-hands.jpg", link: "/collections" },
-            { title: "The Royal Double Monk", desc: "Uncompromising Statement", img: "/images/product-hero.jpg", link: "/collections" }
+            { title: "The Regent Oxford", desc: "Closed-Lacing Elegance", img: "/images/oxford-shoe.webp", link: "/product/regent-oxford" },
+            { title: "The Duke Chelsea", desc: "Effortless Sophistication", img: "/images/chelsea-boot.webp", link: "/product/duke-chelsea" },
+            { title: "The Patrician Loafer", desc: "Relaxed Refinement", img: "/images/loafer.webp", link: "/product/patrician-loafer" },
+            { title: "The Sovereign Formal", desc: "Black Tie, Elevated", img: "/images/product-hero.webp", link: "/product/sovereign-formal" },
+            { title: "The Sentinel Boot", desc: "Built for Legacy", img: "/images/about-workshop.webp", link: "/product/sentinel-boot" },
+            { title: "Edition I — Akwaaba", desc: "Rare by Design", img: "/images/hero-workshop.webp", link: "/product/edition-i" },
+            { title: "The Artisan Derby", desc: "Everyday Distinction", img: "/images/craft-hands.webp", link: "/collections" },
+            { title: "The Royal Double Monk", desc: "Uncompromising Statement", img: "/images/product-hero.webp", link: "/collections" }
           ].map((col, i) => (
             <Link key={i} to={col.link} className="group cursor-pointer block">
               <div className="mb-4 overflow-hidden rounded-xl bg-obsidian/5 aspect-[3/4]">
@@ -250,7 +291,7 @@ export function Home() {
         <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
           <div className="overflow-hidden rounded-xl">
             <img 
-              src="/images/craft-hands.jpg" 
+              src="/images/craft-hands.webp" 
               alt="Artisan crafting a shoe" 
               loading="lazy"
               decoding="async"
@@ -372,14 +413,14 @@ export function Home() {
             <div className="relative flex justify-center lg:justify-start w-full max-w-[420px] mx-auto lg:mx-0 group mb-10 lg:mb-0">
               <div className="w-[75%] rounded-xl overflow-hidden shadow-2xl transition duration-700 group-hover:scale-[1.02] border border-white/5">
                 <img 
-                  src="/images/nelson-author.jpg" 
+                  src="/images/nelson-author.webp" 
                   alt="Nelson Faseyiku - From Invisible to In-Demand" 
                   className="w-full h-auto object-cover"
                 />
               </div>
               <div className="absolute -bottom-10 -right-4 w-[60%] transition duration-700 group-hover:scale-[1.05] group-hover:-translate-y-3 z-10">
                 <img 
-                  src="/images/book-mockup.png" 
+                  src="/images/book-mockup.webp" 
                   alt="The Demand Code Book Cover" 
                   className="w-full h-auto drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]"
                 />
@@ -440,9 +481,9 @@ export function Home() {
         
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { title: "The Anatomy of a Hand-Welted Shoe", date: "Oct 12, 2024", img: "/images/oxford-shoe.jpg" },
-            { title: "Selecting the Finest Italian Calfskin", date: "Sep 28, 2024", img: "/images/chelsea-boot.jpg" },
-            { title: "A Day in the Lagos Studio", date: "Sep 15, 2024", img: "/images/loafer.jpg" }
+            { title: "The Anatomy of a Hand-Welted Shoe", date: "Oct 12, 2024", img: "/images/oxford-shoe.webp" },
+            { title: "Selecting the Finest Italian Calfskin", date: "Sep 28, 2024", img: "/images/chelsea-boot.webp" },
+            { title: "A Day in the Lagos Studio", date: "Sep 15, 2024", img: "/images/loafer.webp" }
           ].map((post, i) => (
             <Link key={i} to="/journal" className="group cursor-pointer block">
               <div className="mb-4 overflow-hidden rounded-lg bg-obsidian/5 aspect-[4/3]">
@@ -462,7 +503,7 @@ export function Home() {
         </h2>
         <div className="mb-16 w-full overflow-hidden rounded-xl">
           <img 
-            src="/images/product-hero.jpg" 
+            src="/images/product-hero.webp" 
             alt="Classic footwear" 
             className="w-full object-cover aspect-[21/9]"
           />
@@ -521,7 +562,7 @@ export function Home() {
         <div className="grid gap-12 md:grid-cols-2 lg:gap-24">
           <div className="overflow-hidden rounded-xl">
             <img 
-              src="/images/about-workshop.jpg" 
+              src="/images/about-workshop.webp" 
               alt="Leather tannery" 
               className="h-full w-full object-cover aspect-[4/5]"
             />

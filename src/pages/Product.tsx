@@ -488,7 +488,7 @@ export function Product() {
         <div className="grid gap-12 lg:grid-cols-2">
           <SectionReveal>
             <img
-              src="/images/craft-hands.jpg"
+              src="/images/craft-hands.webp"
               alt="Craft"
               className="rounded-sm object-cover"
             />
