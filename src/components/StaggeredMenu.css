@@ -1,7 +1,9 @@
 .staggered-menu-wrapper {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 40;
+  z-index: 50;
   pointer-events: none;
 }
 
@@ -12,7 +14,18 @@
   align-items: center;
   justify-content: space-between;
   pointer-events: auto;
-  z-index: 45;
+  z-index: 60;
+  padding: 1rem 1.25rem;
+  background: rgba(250, 249, 246, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.05);
+}
+
+@media (min-width: 768px) {
+  .staggered-menu-header {
+    padding: 1.5rem 2rem;
+  }
 }
 
 .sm-logo {

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Plus, Minus } from "lucide-react";
+import { ArrowRight, Plus, Minus, Play, Pause, VolumeX, Volume2 } from "lucide-react";
 import BounceCards from "../components/BounceCards";
 
 export function Home() {
@@ -48,6 +48,7 @@ export function Home() {
   ];
 
   const leftImages = ["/images/oxford-shoe.webp", "/images/loafer.webp"];
+  const centerImages = ["/images/product-hero.webp", "/images/chelsea-boot.webp", "/images/oxford-shoe.webp", "/images/loafer.webp"];
   const rightImages = ["/images/chelsea-boot.webp", "/images/product-hero.webp"];
 
   const faqItems = [
@@ -85,7 +86,7 @@ export function Home() {
   return (
     <div className="bg-warm-white text-obsidian font-sans">
       {/* HERO SECTION */}
-      <section className="w-full pt-16 pb-12 md:pt-20 md:pb-16 overflow-hidden">
+      <section className="w-full pt-28 pb-12 md:pt-36 md:pb-16 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
           {/* Huge Logo text with scroll effect */}
           <h1
@@ -122,40 +123,29 @@ export function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
             </div>
 
-            {/* 2. Middle Video (Taller) */}
+            {/* 2. Middle Slideshow (Taller) */}
             <div className="order-1 md:order-2 snap-center shrink-0 w-[85vw] md:w-full aspect-[3/4] md:aspect-[9/14] md:h-[78vh] rounded-[2rem] overflow-hidden bg-black relative shadow-xl transition-all duration-700 hover:scale-[1.02] border border-obsidian/10">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                onTimeUpdate={(e) => {
-                  if (e.currentTarget.currentTime > 0.15) {
-                    setVideoLoaded(true);
-                    window.dispatchEvent(new Event("nelson-video-ready"));
-                  }
-                }}
-                className="absolute inset-0 h-full w-full object-contain object-center"
-              >
-                <source src="/videos/hero-video.mp4" type="video/mp4" />
-              </video>
-              
-              {/* Custom Poster Overlay: Nelson logo with ripple effect, fades when video starts */}
-              <div className={`absolute inset-0 bg-obsidian transition-opacity duration-700 flex items-center justify-center ${videoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-                {/* Ripple rings */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute h-32 w-32 rounded-full border border-gold/30 animate-ping" style={{ animationDuration: "1.8s" }} />
-                  <div className="absolute h-48 w-48 rounded-full border border-gold/20 animate-ping" style={{ animationDuration: "2.4s", animationDelay: "0.3s" }} />
-                  <div className="absolute h-64 w-64 rounded-full border border-gold/10 animate-ping" style={{ animationDuration: "3s", animationDelay: "0.6s" }} />
-                </div>
-                {/* Centered NELSON logo text */}
-                <span className="relative z-10 font-display font-black uppercase tracking-[0.2em] text-gold text-3xl md:text-4xl select-none">
+              {centerImages.map((img, idx) => (
+                <img
+                  key={img}
+                  src={img}
+                  alt="Nelson Signature Shoe"
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchPriority={idx === 0 ? "high" : "auto"}
+                  decoding="async"
+                  width="600"
+                  height="933"
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                    idx === slideIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent flex items-center justify-center">
+                {/* Centered NELSON logo text for the main hero piece */}
+                <span className="relative z-10 font-display font-black uppercase tracking-[0.2em] text-gold text-4xl md:text-5xl select-none drop-shadow-xl">
                   NELSON
                 </span>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
 
             {/* 3. Right Shoe Slideshow */}
