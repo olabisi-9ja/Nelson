@@ -47,7 +47,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   openMenuButtonColor = '#0a0a0a',
   accentColor = '#c5a059',
   changeMenuColorOnOpen = true,
-  isFixed = true,
+  isFixed = false,
   closeOnClickAway = true,
   onMenuOpen,
   onMenuClose,
@@ -107,6 +107,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const buildOpenTimeline = useCallback(() => {
     const panel = panelRef.current;
     const layers = preLayerElsRef.current;
+    const preContainer = preLayersRef.current;
     if (!panel) return null;
 
     openTlRef.current?.kill();
@@ -115,6 +116,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       closeTweenRef.current = null;
     }
     itemEntranceTweenRef.current?.kill();
+
+    // Ensure elements are visible when timeline starts
+    gsap.set([panel, preContainer], { visibility: 'visible', pointerEvents: 'auto' });
 
     const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
     const numberEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-list[data-numbering] .sm-panel-item'));
@@ -237,6 +241,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     const panel = panelRef.current;
     const layers = preLayerElsRef.current;
+    const preContainer = preLayersRef.current;
     if (!panel) return;
 
     const all = [...layers, panel];
@@ -248,6 +253,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       ease: 'power3.in',
       overwrite: 'auto',
       onComplete: () => {
+        gsap.set([panel, preContainer], { visibility: 'hidden', pointerEvents: 'none' });
         const itemEls = Array.from(panel.querySelectorAll<HTMLElement>('.sm-panel-itemLabel'));
         if (itemEls.length) {
           gsap.set(itemEls, { yPercent: 140, rotate: 10 });
@@ -385,7 +391,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   return (
     <div
-      className={(className ? className + ' ' : '') + 'staggered-menu-wrapper' + (isFixed ? ' fixed-wrapper' : '')}
+      className={(className ? className + ' ' : '') + 'staggered-menu-wrapper'}
       style={accentColor ? ({ '--sm-accent': accentColor } as React.CSSProperties) : undefined}
       data-position={position}
       data-open={open || undefined}

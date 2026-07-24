@@ -34,18 +34,20 @@ export default function BounceCards({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!containerRef.current) return;
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.card',
-        { scale: 0 },
+        '.bc-card',
+        { scale: 0, opacity: 0 },
         {
           scale: 1,
+          opacity: 1,
           stagger: animationStagger,
           ease: easeType,
           delay: animationDelay
         }
       );
-    }, containerRef);
+    }, containerRef.current);
     return () => ctx.revert();
   }, [animationStagger, easeType, animationDelay]);
 
@@ -74,11 +76,11 @@ export default function BounceCards({
 
   const pushSiblings = (hoveredIdx: number) => {
     if (!enableHover || !containerRef.current) return;
-
-    const q = gsap.utils.selector(containerRef);
+    const container = containerRef.current;
 
     images.forEach((_, i) => {
-      const target = q(`.card-${i}`);
+      const target = container.querySelector(`.card-${i}`);
+      if (!target) return;
       gsap.killTweensOf(target);
 
       const baseTransform = transformStyles[i] || 'none';
@@ -92,7 +94,7 @@ export default function BounceCards({
           overwrite: 'auto'
         });
       } else {
-        const offsetX = i < hoveredIdx ? -160 : 160;
+        const offsetX = i < hoveredIdx ? -140 : 140;
         const pushedTransform = getPushedTransform(baseTransform, offsetX);
 
         const distance = Math.abs(hoveredIdx - i);
@@ -111,11 +113,11 @@ export default function BounceCards({
 
   const resetSiblings = () => {
     if (!enableHover || !containerRef.current) return;
-
-    const q = gsap.utils.selector(containerRef);
+    const container = containerRef.current;
 
     images.forEach((_, i) => {
-      const target = q(`.card-${i}`);
+      const target = container.querySelector(`.card-${i}`);
+      if (!target) return;
       gsap.killTweensOf(target);
       const baseTransform = transformStyles[i] || 'none';
       gsap.to(target, {
@@ -133,6 +135,7 @@ export default function BounceCards({
       ref={containerRef}
       style={{
         position: 'relative',
+        maxWidth: '100%',
         width: containerWidth,
         height: containerHeight
       }}
@@ -140,7 +143,7 @@ export default function BounceCards({
       {images.map((src, idx) => (
         <div
           key={idx}
-          className={`card card-${idx}`}
+          className={`bc-card card-${idx}`}
           style={{
             transform: transformStyles[idx] ?? 'none'
           }}
